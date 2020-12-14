@@ -216,7 +216,6 @@
 
 
                             <!-- Smart Wizard -->
-                            <p></p>
                             <div id="wizard" class="form_wizard wizard_horizontal">
                                 <ul class="wizard_steps">
                                     <li>
@@ -230,27 +229,9 @@
                                     </li>
                                     <li>
                                         <a href="#step-2">
-                                            <span class="step_no"><i class="fa fa-file-code-o"></i></span>
-                                            <span class="step_descr">
-                                             Development Environment<br />
-                                              <small></small>
-                                          </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#step-3">
                                             <span class="step_no"><i class="fa fa-cubes"></i></span>
                                             <span class="step_descr">
-                                         &nbsp;&nbsp;  &nbsp;&nbsp;   Stages &nbsp;&nbsp;&nbsp;&nbsp;<br />
-                                              <small></small>
-                                          </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#step-4">
-                                            <span class="step_no"><i class="fa fa-truck"></i></span>
-                                            <span class="step_descr">
-                                              Deployment Environment<br />
+                                             Stages<br />
                                               <small></small>
                                           </span>
                                         </a>
@@ -266,6 +247,14 @@
                                                 <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Project <span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="text" id="Project" required="required" class="form-control col-md-7 col-xs-12">
+                                            </div>
+                                        </div>
+
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Repository URL <span class="required">*</span>
                                             </label>
@@ -296,7 +285,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Pipeline <span class="required">*</span>
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12"><span class="required"></span>
                                             </label>
                                             <div  class="col-md-6 col-sm-6 col-xs-12">
                                                 <select required="required" class="form-control col-md-7 col-xs-12" tabindex="-1" disabled>
@@ -309,55 +298,28 @@
                                             </div>
                                         </div>
 
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Language <span class="required">*</span>
+                                            </label>
+                                            <div  class="col-md-6 col-sm-6 col-xs-12">
+                                                <select required="required" class="form-control col-md-7 col-xs-12" tabindex="-1" >
+                                                    <option></option>
+                                                    <option value="java">Java</option>
+                                                    <option value="c">C</option>
+                                                    <option value="python">Python</option>
+                                                    <option value="php">PHP</option>
+
+
+                                                </select>
+                                            </div>
+                                        </div>
+
                                     </form>
 
                                 </div>
                                 <div id="step-2">
-                                    <h2 class="StepTitle">Step 2 Content</h2>
-                                    <p>
-                                        do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </p>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                                        in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </p>
-                                </div>
-                                <div id="step-3">
-                                    <h2 class="StepTitle"></h2>
                                     <form class="form-horizontal form-label-left">
                                         <ul class="list-unstyled timeline">
-                                            <li>
-                                                <div class="block">
-                                                    <h2 class="title"> </h2>
-
-                                                    <div class="form-group">
-                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Init </label>
-                                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                                            <div class="">
-                                                                <label >
-                                                                    <input type="checkbox"  class="js-switch"   />
-                                                                </label>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Pipeline <span class="required">*</span>
-                                                        </label>
-                                                        <div  class="col-md-6 col-sm-6 col-xs-12">
-                                                            <select required="required" class="form-control col-md-7 col-xs-12" tabindex="-1" >
-                                                                <option></option>
-                                                                <option value="AK">sap-cloud-sdk</option>
-                                                                <option value="HI">sap-ui5-cf</option>
-                                                                <option value="HI">sap-ui5-neo</option>
-
-                                                            </select>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </li>
                                             <li>
                                                 <div class="block">
                                                     <div class="block_content">
@@ -374,7 +336,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Pipeline <span class="required">*</span>
+                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12"><span class="required"></span>
                                                             </label>
                                                             <div  class="col-md-6 col-sm-6 col-xs-12">
                                                                 <select required="required" class="form-control col-md-7 col-xs-12" tabindex="-1" >
@@ -394,9 +356,9 @@
                                                 <div class="block">
 
                                                     <div class="block_content">
-                                                        <h2 class="title"> </h2>
+                                                        <h2 class="title"></h2>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Test </label>
+                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Local Tests </label>
                                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                                 <div class="">
                                                                     <label >
@@ -407,7 +369,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Pipeline <span class="required">*</span>
+                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12"> <span class="required"></span>
                                                             </label>
                                                             <div  class="col-md-6 col-sm-6 col-xs-12">
                                                                 <select required="required" class="form-control col-md-7 col-xs-12" tabindex="-1" >
@@ -423,18 +385,54 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                        </ul>
-                                    </form>
-                                </div>
-                                <div id="step-4">
-                                    <h2 class="StepTitle">Deployment Environment</h2>
-                                    <h2 class="StepTitle"></h2>
-                                    <form class="form-horizontal form-label-left">
-                                        <div class="block">
-                                            <h2 class="title"> </h2>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Step to add <span class="required">*</span>
-                                                </label>
+                                            <li>
+                                                <div class="block">
+                                                    <h2 class="title"> </h2>
+
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Remote tests </label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <div class="">
+                                                                <label >
+                                                                    <input type="checkbox"  class="js-switch"   />
+                                                                </label>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12"> <span class="required"></span>
+                                                        </label>
+                                                        <div  class="col-md-6 col-sm-6 col-xs-12">
+                                                            <select required="required" class="form-control col-md-7 col-xs-12" tabindex="-1" >
+                                                                <option></option>
+                                                                <option value="AK">End To End tests</option>
+                                                                <option value="HI">Performance tests</option>
+
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="block">
+                                                    <h2 class="title"> </h2>
+
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Quality checks </label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <div class="">
+                                                                <label >
+                                                                    <input type="checkbox"  class="js-switch"   />
+                                                                </label>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12"> <span class="required"></span>
+                                                        </label>
                                                         <div  class="col-md-6 col-sm-6 col-xs-12">
                                                             <select required="required" class="form-control col-md-7 col-xs-12" tabindex="-1" >
                                                                 <option></option>
@@ -447,6 +445,102 @@
                                                     </div>
 
                                                 </div>
+                                            </li>
+                                            <li>
+                                                <div class="block">
+                                                    <h2 class="title"> </h2>
+
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Third-party checks </label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <div class="">
+                                                                <label >
+                                                                    <input type="checkbox"  class="js-switch"   />
+                                                                </label>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12"> <span class="required"></span>
+                                                        </label>
+                                                        <div  class="col-md-6 col-sm-6 col-xs-12">
+                                                            <select required="required" class="form-control col-md-7 col-xs-12" tabindex="-1" >
+                                                                <option></option>
+                                                                <option value="AK">sap-cloud-sdk</option>
+                                                                <option value="HI">sap-ui5-cf</option>
+                                                                <option value="HI">sap-ui5-neo</option>
+
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="block">
+                                                    <h2 class="title"> </h2>
+
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Artifact deployment</label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <div class="">
+                                                                <label >
+                                                                    <input type="checkbox"  class="js-switch"   />
+                                                                </label>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12"> <span class="required"></span>
+                                                        </label>
+                                                        <div  class="col-md-6 col-sm-6 col-xs-12">
+                                                            <select required="required" class="form-control col-md-7 col-xs-12" tabindex="-1" >
+                                                                <option></option>
+                                                                <option value="AK">sap-cloud-sdk</option>
+                                                                <option value="HI">sap-ui5-cf</option>
+                                                                <option value="HI">sap-ui5-neo</option>
+
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="block">
+                                                    <h2 class="title"> </h2>
+
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Production Depolyment</label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <div class="">
+                                                                <label >
+                                                                    <input type="checkbox"  class="js-switch"   />
+                                                                </label>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12"> <span class="required"></span>
+                                                        </label>
+                                                        <div  class="col-md-6 col-sm-6 col-xs-12">
+                                                            <select required="required" class="form-control col-md-7 col-xs-12" tabindex="-1" >
+                                                                <option></option>
+                                                                <option value="AK">sap-cloud-sdk</option>
+                                                                <option value="HI">sap-ui5-cf</option>
+                                                                <option value="HI">sap-ui5-neo</option>
+
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </li>
+                                        </ul>
+
                                     </form>
                                 </div>
 
@@ -462,14 +556,6 @@
     </div>
     <!-- /page content -->
 
-    <!-- footer content -->
-    <footer>
-        <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-        </div>
-        <div class="clearfix"></div>
-    </footer>
-    <!-- /footer content -->
 </div>
 </div>
 
