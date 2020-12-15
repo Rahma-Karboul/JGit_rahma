@@ -19,51 +19,8 @@
         <br />
 
         <!-- sidebar menu -->
-        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-          <div class="menu_section">
-            <h3>General</h3>
-            <ul class="nav side-menu">
-              <li><a th:href="@{/index}"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
-                <ul class="nav child_menu">
-                  <li><a th:href="@{/index}">Dashboard</a></li>
-                  <!-- you can add additional section -->
-                </ul>
-              </li>
-              <li><a><i class="fa fa-edit"></i> Project Section <span class="fa fa-chevron-down"></span></a>
-                <ul class="nav child_menu">
-                  <li><a href="#">General Form</a></li>
-                  <!-- you can add additional section -->
-                </ul>
-              </li>
-              <li><a th:href="@{/Jobs}"><i class="fa fa-desktop"></i> Jobs Section <span class="fa fa-chevron-down"></span></a>
-                <ul class="nav child_menu">
-                  <li><a href="#">General Elements</a></li>
-                  <!-- you can add additional section -->
-                </ul>
-              </li>
-              <li><a><i class="fa fa-table"></i> Users Section <span class="fa fa-chevron-down"></span></a>
-                <ul class="nav child_menu">
-                  <li><a href="tables.html">Tables</a></li>
-                  <!-- you can add additional section -->
-                </ul>
-              </li>
-              <li><a><i class="fa fa-bar-chart-o"></i> Fifth Section <span class="fa fa-chevron-down"></span></a>
-                <ul class="nav child_menu">
-                  <li><a href="chartjs.html">Chart JS</a></li>
-                  <!-- you can add additional section -->
-                </ul>
-              </li>
-              <li><a><i class="fa fa-clone"></i>Sixth Section <span class="fa fa-chevron-down"></span></a>
-                <ul class="nav child_menu">
-                  <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
-                  <!-- you can add additional section -->
-                </ul>
-              </li>
-            </ul>
-          </div>
-
-
-        </div>
+        <!-- :: is a header fragment selector -->
+        <div th:replace="common/includes :: sidebar-menu" />
         <!-- /sidebar menu -->
 
         <!-- /menu footer buttons -->
