@@ -10,7 +10,7 @@
         <div class="col-md-3 left_col">
             <div class="left_col scroll-view">
                 <div class="navbar nav_title" style="border: 0;">
-                    <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>DOFAN</span></a>
+                    <a href="../index.html" class="site_title"><i class="fa fa-paw"></i> <span>DOFAN</span></a>
                 </div>
 
                 <div class="clearfix"></div>
@@ -18,49 +18,9 @@
                 <br/>
 
                 <!-- sidebar menu -->
-                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-                    <div class="menu_section">
-                        <h3>General</h3>
-                        <ul class="nav side-menu">
-                            <li><a><i class="fa fa-home"></i> Dashbord </a>
-
-                            </li>
-                            <li><a><i class="fa fa-edit"></i> Jobs </a>
-                                <ul class="nav child_menu">
-                                    <li><a href="index.html">Job1</a></li>
-                                    <li><a href="index2.html">Job2</a></li>
-                                    <li><a href="index3.html">Job3</a></li>
-                                </ul>
-                            </li>
-                            <li><a><i class="fa fa-user"></i> Users </a>
-                                <ul class="nav child_menu">
-                                    <li><a href="index.html">User1 <small>Admin</small></a></li>
-                                    <li><a href="index2.html">User2</a></li>
-                                    <li><a href="index3.html">User3</a></li>
-                                </ul>
-                            </li>
-                            <li><a><i class="fa fa-desktop"></i> Projects </a>
-                                <ul class="nav child_menu">
-                                    <li><a href="index.html">Project1</a></li>
-                                    <li><a href="index2.html">Project2</a></li>
-                                    <li><a href="index3.html">Project3</a></li>
-                                </ul>
-                            </li>
-
-
-
-
-                            <ul class="nav child_menu">
-                                <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
-                                <li><a href="fixed_footer.html">Fixed Footer</a></li>
-                            </ul>
-                            </li>
-                        </ul>
-                    </div>
-
-
-
-                </div>
+                <!-- :: is a header fragment selector -->
+                <div th:replace="common/includes :: sidebar-menu" />
+                <!-- /sidebar menu -->
 
             </div>
 
@@ -221,6 +181,7 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
+                        <form class="form-horizontal form-label-left">
 
 
                         <div class="" role="tabpanel" data-example-id="togglable-tabs">
@@ -231,10 +192,11 @@
                                 </li>
                                 <li role="presentation" class=""><a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Continuous Delivery</a>
                                 </li>
+                                <li role="presentation" class=""><a href="#tab_content4" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Deployment</a>
+                                </li>
                             </ul>
                             <div id="myTabContent" class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
-                                    <form class="form-horizontal form-label-left">
 
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Job Name <span class="required">*</span>
@@ -310,12 +272,31 @@
                                             </div>
                                         </div>
 
-                                    </form>
+
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
-                                    <form class="form-horizontal form-label-left">
+                                    <div  class="col-md-1 col-sm-6 col-xs-12"></div>
+
+                                    <div  class="col-md-6 col-sm-6 col-xs-12">
                                         <ul class="list-unstyled timeline">
 
+                                            <li>
+
+
+                                                <div class="block">
+                                                    <div class="tags">
+                                                        <a href="" class="tag">
+                                                            <span>Build</span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="block_content">
+                                                        <h2 class="title">     </h2>
+                                                        <input type="checkbox" name="hobbies[]" id="hobby1" value="ski" data-parsley-mincheck="2" required class="flat" /> Backend Integration Tests
+                                                        <br /><br />
+
+                                                    </div>
+                                                </div>
+                                            </li>
                                             <li>
 
 
@@ -351,7 +332,6 @@
                                                 </div>
                                             </li>
                                             <li>
-                                                <br /><br />
 
                                                 <div class="block">
                                                     <div class="tags">
@@ -373,7 +353,7 @@
                                             </li>
                                             <li>
 
-                                                <br /><br />
+
                                                 <div class="block">
                                                     <div class="tags">
                                                         <a href="" class="tag">
@@ -424,11 +404,11 @@
                                             </li>
 
                                         </ul>
+                                    </div>
 
-                                    </form>
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
-                                    <form class="form-horizontal form-label-left">
+
                                         <ul class="list-unstyled timeline">
 
 
@@ -478,11 +458,44 @@
 
                                         </ul>
 
-                                    </form>
+
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="tab_content4" aria-labelledby="profile-tab">
+
+                                        <ul class="list-unstyled timeline">
+
+
+                                            <li>
+                                                <br /><br />
+
+                                                <div class="block" >
+                                                    <div class="tags">
+                                                        <a href="" class="tag">
+                                                            <span>Remote tests</span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="block_content">
+                                                        <h2 class="title">     </h2>
+                                                        <input type="checkbox" name="hobbies[]" id="hobby1" value="ski" data-parsley-mincheck="2" required class="flat" /> End to End Tests
+                                                        <br /><br />
+
+
+
+                                                        <input type="checkbox" name="hobbies[]" id="hobby3" value="eat" class="flat" /> Performance tests
+                                                        <br />
+                                                    </div>
+                                                </div>
+                                            </li>
+
+
+
+                                        </ul>
+
+
                                 </div>
                             </div>
                         </div>
-
+                        </form>
                     </div>
                 </div>
             </div>

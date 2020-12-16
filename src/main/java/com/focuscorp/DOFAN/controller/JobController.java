@@ -6,9 +6,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class JobController {
 
-    @RequestMapping("/Jobs")
+    @RequestMapping("/jobs")
     public String jobs() {
-        return "Jobs";
+        return "/jobs/jobs";
+    }
+
+
+    @RequestMapping("/addJob")
+    public String addJob() {
+        return "/jobs/addJob";
     }
 
 }
