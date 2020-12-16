@@ -81,13 +81,112 @@
 <!-- top navigation -->
 <div th:fragment="top-navigation" class="top_nav">
     <div class="nav_menu">
+        <div class="nav toggle">
+            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+        </div>
+        <nav class="nav navbar-nav">
+            <ul class=" navbar-right">
+                <li class="nav-item dropdown open" style="padding-left: 15px;">
+                    <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+                        <img src="images/img.jpg" alt="">Wmayna Bc
+                    </a>
+                    <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item glyphicon glyphicon-user" href="userProfile.html"> Profile</a>
+                        <a class="dropdown-item glyphicon glyphicon-cog" href="javascript:;">
+                            <span> Settings</span>
+                        </a>
+                        <a class="dropdown-item glyphicon glyphicon-question-sign" href="javascript:;"> Help</a>
+                        <a class="dropdown-item" href="login.html"><i class="glyphicon glyphicon-log-out"></i>  Log Out</a>
+                    </div>
+                </li>
+
+                <li role="presentation" class="nav-item dropdown open" style="margin:0 5px 0 0;">
+                    <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1" data-toggle="dropdown" aria-expanded="true">
+                        <i class="fa fa-envelope"></i>
+                        <span class="badge badge-pill bg-red">6</span>
+                    </a>
+                    <ul class="dropdown-menu list-unstyled msg_list" role="menu" aria-labelledby="navbarDropdown1">
+                        <li class="nav-item">
+                            <a class="dropdown-item">
+                                <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                <span>
+												<span>John Smith</span>
+												<span class="time">3 mins ago</span>
+											</span>
+                                <span class="message">
+												Film festivals used to be do-or-die moments for movie makers. They were where...
+											</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="dropdown-item">
+                                <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                <span>
+												<span>John Smith</span>
+												<span class="time">3 mins ago</span>
+											</span>
+                                <span class="message">
+												Film festivals used to be do-or-die moments for movie makers. They were where...
+											</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="dropdown-item">
+                                <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                <span>
+												<span>John Smith</span>
+												<span class="time">3 mins ago</span>
+											</span>
+                                <span class="message">
+												Film festivals used to be do-or-die moments for movie makers. They were where...
+											</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="dropdown-item">
+                                <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                <span>
+												<span>John Smith</span>
+												<span class="time">3 mins ago</span>
+											</span>
+                                <span class="message">
+												Film festivals used to be do-or-die moments for movie makers. They were where...
+											</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <div class="text-center">
+                                <a class="dropdown-item">
+                                    <strong>See All Alerts</strong>
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li role="presentation" class="nav-item dropdown open" style="margin:0 5px 0 0;">
+                    <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown2" data-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-bell"></i>
+                        <span class="badge badge-pill bg-red">1</span>
+                    </a>
+                    <ul class="dropdown-menu list-unstyled msg_list" role="menu" aria-labelledby="navbarDropdown1">
+
+
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<!--<div th:fragment="top-navigation" class="top_nav">
+    <div class="nav_menu">
         <nav>
             <div class="nav toggle">
                 <a id="menu_toggle"><i class="fa fa-bars"></i></a>
             </div>
 
             <ul class="nav navbar-nav navbar-right">
-                <!-- Profile -->
+                &lt;!&ndash; Profile &ndash;&gt;
                 <li class="nav-item dropdown open" style="padding-left: 15px;">
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
                         <img src="images/img.jpg" alt="">Dofan Agent
@@ -101,7 +200,7 @@
                         <a class="dropdown-item" href="login.html"><i class="glyphicon glyphicon-log-out"></i>  Log Out</a>
                     </div>
                 </li>
-                <!--<li class="">
+                &lt;!&ndash;<li class="">
                     <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                         <i class="fa fa-user"></i>Administrator
                         <span class=" fa fa-angle-down"></span>
@@ -117,8 +216,8 @@
                         <li><a href="javascript:;">Help</a></li>
                         <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                     </ul>
-                </li>-->
-                <!-- Notification -->
+                </li>&ndash;&gt;
+                &lt;!&ndash; Notification &ndash;&gt;
                 <li role="presentation" class="nav-item dropdown open" style="margin:0 5px 0 0;">
                     <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1" data-toggle="dropdown" aria-expanded="false">
                         <i class="fa fa-envelope"></i>
@@ -161,7 +260,7 @@
 
                     </ul>
                 </li>
-               <!-- <li role="presentation" class="dropdown">
+               &lt;!&ndash; <li role="presentation" class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                         <i class="fa fa-envelope-o"></i>
                         &lt;!&ndash;Notification count&ndash;&gt;
@@ -189,11 +288,11 @@
                             </div>
                         </li>
                     </ul>
-                </li>-->
+                </li>&ndash;&gt;
             </ul>
         </nav>
     </div>
-</div>
+</div>-->
 <!-- /top navigation -->
 
 
