@@ -95,15 +95,10 @@
                         <span class=" fa fa-angle-down"></span>
                     </a>
                     <ul class="dropdown-menu dropdown-usermenu pull-right">
-                        <li><a class="dropdown-item glyphicon glyphicon-user" href="userProfile.html"> Profile</a></li>
-                        <li>
-                            <a class="dropdown-item glyphicon glyphicon-cog" href="javascript:;">
-                                <span> Settings</span>
-                            </a>
-                        </li>
-                        <li> <a class="dropdown-item glyphicon glyphicon-question-sign" href="javascript:;"> Help</a>
-                        </li>
-                        <li><a class="dropdown-item" href="login.html"><i class="glyphicon glyphicon-log-out"></i>  Log Out</a></li>
+                        <li><a th:href="@{/userProfile}" class="dropdown-item glyphicon glyphicon-user"> Profile</a></li>
+                        <li><a class="dropdown-item glyphicon glyphicon-cog" href="javascript:;"> Settings</a></li>
+                        <li><a class="dropdown-item glyphicon glyphicon-question-sign" href="javascript:;"> Help</a></li>
+                        <li><a class="dropdown-item glyphicon glyphicon-log-out" href="javascript:;"> Log Out</a></li>
                     </ul>
                 </li>
 

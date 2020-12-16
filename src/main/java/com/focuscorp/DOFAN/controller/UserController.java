@@ -11,4 +11,10 @@ public class UserController {
     public String users() {
         return "users/displayUsers";
     }
+
+
+    @RequestMapping("/userProfile")
+    public String getUser() {
+        return "users/userProfile";
+    }
 }
