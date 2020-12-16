@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<!-- :: is a header fragment selector -->
+<div th:replace="common/includes :: common-header" />
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <br />
+
+            <!-- sidebar menu -->
+            <!-- :: is a header fragment selector -->
+            <div th:replace="common/includes :: sidebar-menu" />
+            <!-- /sidebar menu -->
+
+            <!-- /menu footer buttons -->
+            <div class="sidebar-footer hidden-small">
+              <a data-toggle="tooltip" data-placement="top" title="Settings">
+                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Lock">
+                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+              </a>
+            </div>
+            <!-- /menu footer buttons -->
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div th:replace="common/includes :: top-navigation" />
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3>Projects <small>Listing design</small></h3>
+              </div>
+
+              <div class="title_right">
+                <div class="col-md-5 col-sm-5   form-group pull-right top_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-secondary" type="button">Go!</button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="clearfix"></div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Projects</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li>
+                        <input type="text" class="form-control" placeholder="Search for...">
+                      </li>
+                      <li>
+                        <button type="button" class="btn glyphicon glyphicon-plus" title="add user"  data-toggle="modal" data-target=".bs-example-modal-lg"></button>
+                        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+                          <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                              <div class="modal-body">
+                                <form class="form-horizontal form-label-left" action="" method="post">
+                                  <span class="section">Project Infos</span>
+
+                                  <div class="field item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3  label-align">Name<span class="required">*</span></label>
+                                    <div class="col-md-6 col-sm-6">
+                                      <input class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" required="required" />
+                                    </div>
+                                  </div>
+                                  <div class="field item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3  label-align">Description<span class="required">*</span></label>
+                                    <div class="col-md-6 col-sm-6">
+                                      <textarea class="form-control" required="required" name='description'></textarea></div>
+                                  </div>
+                                  <div class="ln_solid">
+                                    <div class="form-group">
+                                      <div class="col-md-6 offset-md-3">
+                                        <button type='button' class="btn btn-danger glyphicon glyphicon-remove pull-right" style="top: 10px;"></button>
+
+                                        <button type='submit' class="btn btn-success glyphicon glyphicon-ok pull-right" style="top: 10px;"></button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </form>
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+                        <div class="modal fade bs-edit-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+                          <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                              <div class="modal-body">
+                                <form id="formEditProject" class="form-horizontal form-label-left" action="" method="post">
+                                  <span class="section">Edit Project Infos</span>
+
+                                  <div class="field item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3  label-align">Name<span class="required">*</span></label>
+                                    <div class="col-md-6 col-sm-6">
+                                      <input class="form-control" name="projectName" required="required" />
+                                    </div>
+                                  </div>
+                                  <div class="field item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3  label-align">Description<span class="required">*</span></label>
+                                    <div class="col-md-6 col-sm-6">
+                                      <textarea class="form-control" required="required" name='description'></textarea></div>
+                                  </div>
+                                  <div class="ln_solid">
+                                    <div class="form-group">
+                                      <div class="col-md-6 offset-md-3">
+                                        <button type='button' class="btn btn-danger glyphicon glyphicon-remove pull-right" style="top: 10px;"></button>
+
+                                        <button type='submit' class="btn btn-success glyphicon glyphicon-ok pull-right" style="top: 10px;"></button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </form>
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Settings 1</a>
+                            <a class="dropdown-item" href="#">Settings 2</a>
+                          </div>
+                      </li>
+
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+
+                    <!-- start project list -->
+                    <table class="table table-striped projects">
+                      <thead>
+                        <tr>
+                          <th style="width: 20%">Project Name</th>
+                          <th>Project Description</th>
+                          <th style="width: 20%">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Early Watch Alert</td>
+
+                          <td>description of Early Watch Alert</td>
+                          <td>
+                            <button class="btn glyphicon glyphicon-eye-open green" type="button" data-toggle="tooltip" data-placement="left" data-original-title="details"/>
+                            <button class="btn glyphicon glyphicon-pencil blue editProject" title="edit" type="button" data-toggle="modal" data-target=".bs-edit-modal-lg" />
+                            <button class="btn glyphicon glyphicon-trash red" title="delete" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="delete"/>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Object List</td>
+
+                          <td>description of Object List</td>
+                          <td>
+                            <button class="btn glyphicon glyphicon-eye-open green" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="details"/>
+                            <button class="btn glyphicon glyphicon-pencil blue editProject" title="edit" type="button" data-toggle="modal" data-target=".bs-edit-modal-lg" />
+                            <button class="btn glyphicon glyphicon-trash red" title="delete" type="button" data-toggle="tooltip" data-placement="left" data-original-title="delete"/>
+                        </tr>
+                        <tr>
+                          <td>Stser Runtime</td>
+
+                          <td>description of Stser Runtime</td>
+                          <td>
+                            <button class="btn glyphicon glyphicon-eye-open green" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="details"/>
+                            <button class="btn glyphicon glyphicon-pencil blue editProject" title="edit" type="button" data-toggle="modal" data-target=".bs-edit-modal-lg" />
+                            <button class="btn glyphicon glyphicon-trash red" title="delete" type="button" data-toggle="tooltip" data-placement="left" data-original-title="delete"/>
+                        </tr>
+                        <tr>
+                          <td>Ewa Monitoring</td>
+
+                          <td>description of Ewa Monitoring</td>
+                          <td>
+                            <button class="btn glyphicon glyphicon-eye-open green" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="details"/>
+                            <button class="btn glyphicon glyphicon-pencil blue editProject" title="edit" type="button" data-toggle="modal" data-target=".bs-edit-modal-lg" />
+                            <button class="btn glyphicon glyphicon-trash red" title="delete" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="delete"/>
+                        </tr>
+                        <tr>
+                          <td>Pesamakini Backend UI</td>
+
+                          <td>description of Pesamakini Backend UI</td>
+                          <td>
+                            <button class="btn glyphicon glyphicon-eye-open green" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="details"/>
+                            <button class="btn glyphicon glyphicon-pencil blue editProject" title="edit" type="button" data-toggle="modal" data-target=".bs-edit-modal-lg" />
+                            <button class="btn glyphicon glyphicon-trash red" title="delete" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="delete"/>
+                        </tr>
+                        <tr>
+                          <td>Pesamakini Backend UI</td>
+
+                          <td>description of Pesamakini Backend UI</td>
+                          <td>
+                            <button class="btn glyphicon glyphicon-eye-open green" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="details"/>
+                            <button class="btn glyphicon glyphicon-pencil blue editProject" title="edit" type="button" data-toggle="modal" data-target=".bs-edit-modal-lg" />
+                            <button class="btn glyphicon glyphicon-trash red" title="delete" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="delete"/>
+                        </tr>
+                        <tr>
+                          <td>Pesamakini Backend UI</td>
+
+                          <td>description of Pesamakini Backend UI</td>
+                          <td>
+                            <button class="btn glyphicon glyphicon-eye-open green" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="details"/>
+                            <button class="btn glyphicon glyphicon-pencil blue editProject" title="edit" type="button" data-toggle="modal" data-target=".bs-edit-modal-lg" />
+                            <button class="btn glyphicon glyphicon-trash red" title="delete" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="delete"/>
+                        </tr>
+                        <tr>
+                          <td>Pesamakini Backend UI</td>
+
+                          <td>description of Pesamakini Backend UI</td>
+                          <td>
+                            <button class="btn glyphicon glyphicon-eye-open green" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="details"/>
+                            <button class="btn glyphicon glyphicon-pencil blue editProject" title="edit" type="button" data-toggle="modal" data-target=".bs-edit-modal-lg" />
+                            <button class="btn glyphicon glyphicon-trash red" title="delete" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="delete"/>
+                        </tr>
+                        <tr>
+                          <td>Pesamakini Backend UI</td>
+
+                          <td>description of Pesamakini Backend UI</td>
+                          <td>
+                            <button class="btn glyphicon glyphicon-eye-open green" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="details"/>
+                            <button class="btn glyphicon glyphicon-pencil blue editProject" title="edit" type="button" data-toggle="modal" data-target=".bs-edit-modal-lg" />
+                            <button class="btn glyphicon glyphicon-trash red" title="delete" type="button" data-toggle="tooltip" data-placement="left" data-original-title="delete"/>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <!-- end project list -->
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            DOFAN - Next Gen by <a href=" ">Focus Corporation</a>
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+
+    <!-- :: is a footer fragment selector -->
+    <div th:replace="common/includes :: body-bottom-scripts" />
+
+
+
+  </body>
+</html>

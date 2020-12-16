@@ -1,0 +1,6 @@
+* {
+    box-sizing: border-box;
+}
+input.disabled:hover {
+    cursor:not-allowed
+}
