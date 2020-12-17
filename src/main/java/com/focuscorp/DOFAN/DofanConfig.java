@@ -22,7 +22,7 @@ import java.util.Locale;
 
 @Configuration
 public class DofanConfig implements WebMvcConfigurer {
-
+/*
     @Autowired
     private ApplicationContext applicationContext;
 
@@ -59,6 +59,7 @@ public class DofanConfig implements WebMvcConfigurer {
         bean.setOrder(1);
         return bean;
     }
+    */
 
     /*@Bean
     public ViewResolver thymeleafResolver (){
