@@ -53,7 +53,7 @@
         <div class="">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>Create job</h3>
+                    <h3>Create Pipeline</h3>
                 </div>
 
                 <div class="title_right">
@@ -69,7 +69,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Create Job </h2>
+                        <h2>Create Pipeline </h2>
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                             </li>
@@ -88,7 +88,7 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <form class="form-horizontal form-label-left">
+                        <form class="form-horizontal form-label-left" novalidate>
 
 
                         <div class="" role="tabpanel" data-example-id="togglable-tabs">
@@ -104,30 +104,34 @@
                             </ul>
                             <div id="myTabContent" class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
-
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Job Name <span class="required">*</span>
+                                    <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Pipeline Name <span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Project <span class="required">*</span>
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" id="Project" required="required" class="form-control col-md-7 col-xs-12">
-                                            </div>
-                                        </div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Project <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <select required="required" class="form-control col-md-7 col-xs-12" tabindex="-1">
+                                                <option></option>
+                                                <option value="AK">Project 1</option>
+                                                <option value="HI">Project 2</option>
 
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Repository URL <span class="required">*</span>
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
-                                            </div>
+                                            </select>
                                         </div>
-                                        <div class="form-group">
+                                    </div>
+
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Repository URL <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                                        </div>
+                                    </div>
+                                    <div class="item form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Repository Credentials <span class="required">*</span></label>
                                             <div  class="col-md-6 col-sm-6 col-xs-12">
                                                 <select required="required" class="form-control col-md-7 col-xs-12" tabindex="-1">
@@ -137,7 +141,7 @@
 
                                                 </select>
                                             </div>
-                                        </div>
+                                    </div>
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">SAP environment</label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -163,8 +167,8 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Language <span class="required">*</span>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Technology <span class="required">*</span>
                                             </label>
                                             <div  class="col-md-6 col-sm-6 col-xs-12">
                                                 <select required="required" class="form-control col-md-7 col-xs-12" tabindex="-1" >

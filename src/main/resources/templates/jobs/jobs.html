@@ -19,7 +19,7 @@
 
         <!-- sidebar menu -->
         <!-- :: is a header fragment selector -->
-        <div th:replace="common/includes :: sidebar-menu" />
+        <div th:replace="common/includes :: sidebar-menu"></div>
         <!-- /sidebar menu -->
 
         <!-- /menu footer buttons -->
@@ -59,29 +59,55 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>All Pipelines</h3>
+                <h3>&nbsp&nbsp&nbspAll Pipelines</h3>
 
               </div>
 
               <div class="title_right">
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                <div class="col-md-4 form-group pull-right top_search">
                   <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search for...">
                     <span class="input-group-btn">
                               <button class="btn btn-default" type="button">Go!</button>
-                          </span>
+                    </span>
+                  </div>
+                </div>
+                <div class="col-md-4 form-group pull-right top_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Choose">
+                    <span class="input-group-btn">
+                      <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button">Pipeline</button>
+                    <ul role="menu" class="dropdown-menu">
+                      <li>Pipeline 1</li>
+                      <li>Pipeline 2</li>
+                    </ul>
+                    </span>
+                  </div>
+                </div>
+                <div class="col-md-4 form-group pull-right top_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Choose">
+                    <span class="input-group-btn">
+                      <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button">Project</button>
+                     <ul role="menu" class="dropdown-menu">
+                      <li>Project 1</li>
+                      <li>Project 2</li>
+                     </ul>
+                    </span>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="clearfix"></div>
+            <div class="clearfix pull-right">
+                <button class="btn btn-round btn-primary" type="button"><a th:href="@{/addJob}" class="btn-primary">Create New Pipeline</a></button>
+            </div>
 
             <div class="row">
 
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2> Project_xx1(2)<small></small></h2>
+                    <h2> Project 1(2)<small></small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a href="#/plus"><i class="fa fa-plus"></i></a>
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -92,14 +118,12 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <div>
-                      <button class="btn btn-round btn-primary" type="button"><a th:href="@{/addJob}" class="btn-primary">Create New job</a></button>
-                    </div>
+
                     <!-- start of weather widget -->
                     <div class="col-md-6 col-sm-6 col-xs-12">
                       <div class="x_panel">
                         <div class="x_title">
-                          <h2>Job 1</h2>
+                          <h2>Pipeline 1</h2>
                           <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                             </li>
@@ -134,7 +158,7 @@
                             </div>
                             <div class="col-sm-8">
                               <div class="weather-text">
-                                <h2>Last status: Success <br><i>Build Time: 8s</i></h2>
+                                <h2>Last status: Success <br><a th:href="@{/builds}"><i>Build Time: 8s</i></a></h2>
                               </div>
                             </div>
                           </div>
@@ -154,7 +178,7 @@
                     <div class="col-md-6 col-sm-6 col-xs-12">
                       <div class="x_panel">
                         <div class="x_title">
-                          <h2>Job 2</h2>
+                          <h2>Pipeline 2</h2>
                           <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                             </li>
@@ -189,7 +213,7 @@
                             </div>
                             <div class="col-sm-8">
                               <div class="weather-text">
-                                <h2>Last Status: Success <br><i>Build time: 9s</i></h2>
+                                <h2>Last Status: Success <br><a th:href="@{/builds}"><i>Build time: 9s</i></a></h2>
                               </div>
                             </div>
                           </div>
