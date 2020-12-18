@@ -1,6 +1,11 @@
-* {
+/** {
     box-sizing: border-box;
-}
+}*/
+
 input.disabled:hover {
     cursor:not-allowed
+}
+
+.back {
+    background-color: transparent !important;
 }
