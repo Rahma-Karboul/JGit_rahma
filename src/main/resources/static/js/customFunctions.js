@@ -43,7 +43,7 @@ for(var i in projects){
  jQuery(".editProject").click(function () {
 
       var rowProject = jQuery(this).closest("tr")[0].cells;
-      var projectName = rowProject[0].firstChild;
+      var projectName = rowProject[0].firstChild.textContent;
       var description = rowProject[1].innerHTML;
 
       var form = document.getElementById("formEditProject");
