@@ -1934,16 +1934,12 @@ if (typeof NProgress != 'undefined') {
 				$('.chart').easyPieChart({
 				  easing: 'easeOutElastic',
 				  delay: 3000,
-				  barColor: '#26B99A',
+				  barColor: '#2CC990',
 				  trackColor: '#fff',
 				  scaleColor: false,
 				  lineWidth: 20,
 				  trackWidth: 16,
-				  lineCap: 'butt',
-				  onStep: function(from, to, percent) {
-				  	/* changed Math.round(percent) with percent to display the text properly */
-					$(this.el).find('.percent').text(percent);
-				  }
+				  lineCap: 'butt'
 				});
 				var chart = window.chart = $('.chart').data('easyPieChart');
 				$('.js_update').on('click', function() {
@@ -2993,14 +2989,13 @@ if (typeof NProgress != 'undefined') {
                       toolbox: {
                           show: true,
                           feature: {
-                              dataView: {
-                              	show: true, readOnly: false, title: 'Data View'},
                               magicType: {
                                   show: true,
-                                  type: ['line', 'bar'],
+                                  type: ['line', 'stack'],
                                   title: {
                                       line: 'Line View',
-                                      bar: 'Bar View'
+
+                                      stack: 'Stack View'
                                   }
                               },
                               restore: {
