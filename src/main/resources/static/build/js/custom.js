@@ -2993,10 +2993,21 @@ if (typeof NProgress != 'undefined') {
                       toolbox: {
                           show: true,
                           feature: {
-                              dataView: {show: true, readOnly: false},
-                              magicType: {show: true, type: ['line', 'bar']},
-                              restore: {show: true},
-                              saveAsImage: {show: true}
+                              dataView: {
+                              	show: true, readOnly: false, title: 'Data View'},
+                              magicType: {
+                                  show: true,
+                                  type: ['line', 'bar'],
+                                  title: {
+                                      line: 'Line View',
+                                      bar: 'Bar View'
+                                  }
+                              },
+                              restore: {
+                              	show: true, title: 'Restore'
+							  },
+                              saveAsImage: {
+                              	show: true, title: 'Save As Image'}
                           }
                       },
                       calculable: true,
