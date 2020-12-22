@@ -1941,7 +1941,8 @@ if (typeof NProgress != 'undefined') {
 				  trackWidth: 16,
 				  lineCap: 'butt',
 				  onStep: function(from, to, percent) {
-					$(this.el).find('.percent').text(Math.round(percent));
+				  	/* changed Math.round(percent) with percent to display the text properly */
+					$(this.el).find('.percent').text(percent);
 				  }
 				});
 				var chart = window.chart = $('.chart').data('easyPieChart');
@@ -2978,71 +2979,81 @@ if (typeof NProgress != 'undefined') {
 				  var echartBar = echarts.init(document.getElementById('mainb'), theme);
 
 				  echartBar.setOption({
-					title: {
-					  text: 'Graph title',
-					  subtext: 'Graph Sub-text'
-					},
-					tooltip: {
-					  trigger: 'axis'
-					},
-					legend: {
-					  data: ['sales', 'purchases']
-					},
-					toolbox: {
-					  show: false
-					},
-					calculable: false,
-					xAxis: [{
-					  type: 'category',
-					  data: ['1?', '2?', '3?', '4?', '5?', '6?', '7?', '8?', '9?', '10?', '11?', '12?']
-					}],
-					yAxis: [{
-					  type: 'value'
-					}],
-					series: [{
-					  name: 'sales',
-					  type: 'bar',
-					  data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
-					  markPoint: {
-						data: [{
-						  type: 'max',
-						  name: '???'
-						}, {
-						  type: 'min',
-						  name: '???'
-						}]
-					  },
-					  markLine: {
-						data: [{
-						  type: 'average',
-						  name: '???'
-						}]
-					  }
-					}, {
-					  name: 'purchases',
-					  type: 'bar',
-					  data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3],
-					  markPoint: {
-						data: [{
-						  name: 'sales',
-						  value: 182.2,
-						  xAxis: 7,
-						  yAxis: 183,
-						}, {
-						  name: 'purchases',
-						  value: 2.3,
-						  xAxis: 11,
-						  yAxis: 3
-						}]
-					  },
-					  markLine: {
-						data: [{
-						  type: 'average',
-						  name: '???'
-						}]
-					  }
-					}]
-				  });
+                      color: ['#2CC990','#FC6042'],
+                      title: {
+                          text: 'Project',
+                          subtext: ''
+                      },
+                      tooltip: {
+                          trigger: 'axis'
+                      },
+                      legend: {
+                          data: ['Success','Failed']
+                      },
+                      toolbox: {
+                          show: true,
+                          feature: {
+                              dataView: {show: true, readOnly: false},
+                              magicType: {show: true, type: ['line', 'bar']},
+                              restore: {show: true},
+                              saveAsImage: {show: true}
+                          }
+                      },
+                      calculable: true,
+                      xAxis: [
+                          {
+                              name: 'Project',
+                              type: 'category',
+                              data: ['Project_Name_1', 'Project_Name_2', 'Project_Name3'],
+                              color: 'red'
+                          }
+                      ],
+                      yAxis: [
+                          {
+                              name: 'Pipeline Number',
+                              type: 'value',
+                              color: 'red'
+                          }
+                      ],
+                      series: [
+                          {
+                              name: 'Success',
+                              type: 'bar',
+                              data: [2, 5, 7],
+                              markPoint: {
+                                  data: [
+                                      /* Display Blue Mark Min/Max */
+                                      {type: 'max', name: 'max'},
+                                      {type: 'min', name: 'min'}
+                                  ]
+                              },
+                              markLine: {
+                                  data: [
+                                      /* Red Line Average */
+                                      {type: 'average', name: 'average'}
+                                  ]
+                              }
+                          },
+                          {
+                              name: 'Failed',
+                              type: 'bar',
+                              data: [10, 6, 8],
+                              markPoint: {
+                                  data: [
+                                      /* Display Blue Mark Min/Max */
+                                      {type: 'max', name: 'max'},
+                                      {type: 'min', name: 'min'}
+                                  ]
+                              },
+                              markLine: {
+                                  data: [
+                                      /* Blue Line Average */
+                                      {type: 'average', name: 'average'}
+                                  ]
+                              }
+                          }
+                      ]
+                  });
 
 			}
 			  
