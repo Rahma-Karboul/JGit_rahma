@@ -64,17 +64,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="clearfix"></div>
+                <div class="clearfix pull-right">
+                    <button class="btn btn-round btn-primary" type="button" data-toggle="modal" data-target=".add-user-modal">Add User</button>
+                </div>
                 <div class="row">
                     <div class="col-md-12 col-sm-12 ">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Table Users</h2>
+                                <h2>Users</h2>
 
                                 <ul class="nav navbar-right panel_toolbox">
                                     <li>
-                                        <button type="button" class="btn glyphicon glyphicon-plus" title="add user" data-toggle="modal" data-target=".bs-example-modal-lg"></button>
-                                        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+                                       <!-- <button type="button" class="btn glyphicon glyphicon-plus" title="add user" data-toggle="modal" data-target=".bs-example-modal-lg"></button>
+                                       --> <div class="modal fade add-user-modal" tabindex="-1" role="dialog" aria-hidden="true">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
                                                     <div class="modal-body">
@@ -100,34 +102,34 @@
                                                                 <div class="col-md-6 col-sm-6">
                                                                     <div class="checkbox">
                                                                         <label>
-                                                                            <input type="checkbox" name="projects[]" id="project1" value="project1" class="flat" /> project1
+                                                                            <input type="checkbox" name="projects[]" id="project_1" value="project1" class="flat" /> project1
                                                                         </label>
                                                                     </div>
                                                                     <div class="checkbox">
                                                                         <label>
-                                                                            <input type="checkbox" name="projects[]" id="project2" value="project2" class="flat" /> project2
+                                                                            <input type="checkbox" name="projects[]" id="project_2" value="project2" class="flat" /> project2
                                                                         </label>
                                                                     </div>
                                                                     <div class="checkbox">
                                                                         <label>
-                                                                            <input type="checkbox" name="projects[]" id="project3" value="project3" class="flat" /> project3
+                                                                            <input type="checkbox" name="projects[]" id="project_3" value="project3" class="flat" /> project3
                                                                         </label>
                                                                     </div>
                                                                     <div class="checkbox">
                                                                         <label>
-                                                                            <input type="checkbox" name="projects[]" id="project4" value="project4" class="flat" /> project4
+                                                                            <input type="checkbox" name="projects[]" id="project_4" value="project4" class="flat" /> project4
                                                                         </label>
                                                                     </div>
                                                                     <div class="checkbox">
                                                                         <label>
-                                                                            <input type="checkbox" name="projects[]" id="project5" value="project5" class="flat" /> project5
+                                                                            <input type="checkbox" name="projects[]" id="project_5" value="project5" class="flat" /> project5
                                                                         </label>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="ln_solid">
                                                                 <div class="form-group">
-                                                                    <div class="col-md-6 offset-md-3">
+                                                                    <div class="col-md-9 offset-md-3">
                                                                         <button type='button' class="btn btn-danger glyphicon glyphicon-remove pull-right"></button>
                                                                         <button type='submit' class="btn btn-success glyphicon glyphicon-ok pull-right"></button>
                                                                    </div>
@@ -139,7 +141,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="modal fade edit-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+                                        <div class="modal fade edit-user-modal" tabindex="-1" role="dialog" aria-hidden="true">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
                                                     <div class="modal-body">
@@ -212,7 +214,7 @@
                                                             </div>
                                                             <div class="ln_solid">
                                                                 <div class="form-group">
-                                                                    <div class="col-md-6 offset-md-3">
+                                                                    <div class="col-md-9 offset-md-3">
                                                                         <button type='cancel' class="btn btn-danger glyphicon glyphicon-remove pull-right"></button>
                                                                         <button type='submit' class="btn btn-success glyphicon glyphicon-ok pull-right"></button>
                                                                     </div>
@@ -271,8 +273,8 @@
                                                     </ul></td>
                                                     <td>
 
-                                                       <button class="btn glyphicon glyphicon-pencil blue editUser" title="edit" type="button" data-toggle="modal" data-target=".edit-modal-lg"/>
-                                                        <button class="btn glyphicon glyphicon-trash red" title="delete" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="delete"/>
+                                                       <button class="btn glyphicon glyphicon-pencil blue editUser back" title="edit" type="button" data-toggle="modal" data-target=".edit-user-modal"/>
+                                                        <button class="btn glyphicon glyphicon-trash red back" title="delete" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="delete"/>
 
                                                     </td>
                                                 </tr>
@@ -289,8 +291,8 @@
                                                         <li>Project5</li>
                                                     </ul></td>
                                                     <td>
-                                                        <button class="btn glyphicon glyphicon-pencil blue editUser" title="edit" type="button" data-toggle="modal" data-target=".edit-modal-lg"/>
-                                                        <button class="btn glyphicon glyphicon-trash red" title="delete" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="delete"/>
+                                                        <button class="btn glyphicon glyphicon-pencil blue editUser back" title="edit" type="button" data-toggle="modal" data-target=".edit-user-modal"/>
+                                                        <button class="btn glyphicon glyphicon-trash red back" title="delete" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="delete"/>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -306,8 +308,8 @@
                                                         <li>Project5</li>
                                                     </ul></td>
                                                     <td>
-                                                        <button class="btn glyphicon glyphicon-pencil blue editUser" title="edit" type="button" data-toggle="modal" data-target=".edit-modal-lg"/>
-                                                        <button class="btn glyphicon glyphicon-trash red" title="delete" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="delete"/>
+                                                        <button class="btn glyphicon glyphicon-pencil blue editUser back" title="edit" type="button" data-toggle="modal" data-target=".edit-user-modal"/>
+                                                        <button class="btn glyphicon glyphicon-trash red back" title="delete" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="delete"/>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -323,8 +325,8 @@
 
                                                     </ul></td>
                                                     <td>
-                                                        <button class="btn glyphicon glyphicon-pencil blue editUser" title="edit" type="button" data-toggle="modal" data-target=".edit-modal-lg"/>
-                                                        <button class="btn glyphicon glyphicon-trash red" title="delete" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="delete"/>
+                                                        <button class="btn glyphicon glyphicon-pencil blue editUser back" title="edit" type="button" data-toggle="modal" data-target=".edit-user-modal"/>
+                                                        <button class="btn glyphicon glyphicon-trash red back" title="delete" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="delete"/>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -340,8 +342,8 @@
                                                         <li>Project5</li>
                                                     </ul></td>
                                                     <td>
-                                                        <button class="btn glyphicon glyphicon-pencil blue editUser" title="edit" type="button" data-toggle="modal" data-target=".edit-modal-lg"/>
-                                                        <button class="btn glyphicon glyphicon-trash red" title="delete" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="delete"/>
+                                                        <button class="btn glyphicon glyphicon-pencil blue editUser back" title="edit" type="button" data-toggle="modal" data-target=".edit-user-modal"/>
+                                                        <button class="btn glyphicon glyphicon-trash red back" title="delete" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="delete"/>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -357,8 +359,8 @@
                                                         <li>Project5</li>
                                                     </ul></td>
                                                     <td>
-                                                        <button class="btn glyphicon glyphicon-pencil blue editUser" title="edit" type="button" data-toggle="modal" data-target=".edit-modal-lg"/>
-                                                        <button class="btn glyphicon glyphicon-trash red" title="delete" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="delete"/>
+                                                        <button class="btn glyphicon glyphicon-pencil blue editUser back" title="edit" type="button" data-toggle="modal" data-target=".edit-user-modal"/>
+                                                        <button class="btn glyphicon glyphicon-trash red back" title="delete" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="delete"/>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -374,8 +376,8 @@
                                                         <li>Project5</li>
                                                     </ul></td>
                                                     <td>
-                                                        <button class="btn glyphicon glyphicon-pencil blue editUser" title="edit" type="button" data-toggle="modal" data-target=".edit-modal-lg"/>
-                                                        <button class="btn glyphicon glyphicon-trash red" title="delete" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="delete"/>
+                                                        <button class="btn glyphicon glyphicon-pencil blue editUser back" title="edit" type="button" data-toggle="modal" data-target=".edit-user-modal"/>
+                                                        <button class="btn glyphicon glyphicon-trash red back" title="delete" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="delete"/>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -391,8 +393,8 @@
                                                         <li>Project5</li>
                                                     </ul></td>
                                                     <td>
-                                                        <button class="btn glyphicon glyphicon-pencil blue editUser" title="edit" type="button" data-toggle="modal" data-target=".edit-modal-lg"/>
-                                                        <button class="btn glyphicon glyphicon-trash red" title="delete" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="delete"/>
+                                                        <button class="btn glyphicon glyphicon-pencil blue editUser back" title="edit" type="button" data-toggle="modal" data-target=".edit-user-modal"/>
+                                                        <button class="btn glyphicon glyphicon-trash red back" title="delete" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="delete"/>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -408,8 +410,8 @@
 
                                                     </ul></td>
                                                     <td>
-                                                        <button class="btn glyphicon glyphicon-pencil blue editUser" title="edit" type="button" data-toggle="modal" data-target=".edit-modal-lg"/>
-                                                        <button class="btn glyphicon glyphicon-trash red" title="delete" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="delete"/>
+                                                        <button class="btn glyphicon glyphicon-pencil blue editUser back" title="edit" type="button" data-toggle="modal" data-target=".edit-user-modal"/>
+                                                        <button class="btn glyphicon glyphicon-trash red back" title="delete" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="delete"/>
                                                     </td>
                                                 </tr>
 
@@ -426,8 +428,8 @@
                                                         <li>Project3</li>
                                                     </ul></td>
                                                     <td>
-                                                        <button class="btn glyphicon glyphicon-pencil blue editUser" title="edit" type="button" data-toggle="modal" data-target=".edit-modal-lg"/>
-                                                        <button class="btn glyphicon glyphicon-trash red" title="delete" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="delete"/>
+                                                        <button class="btn glyphicon glyphicon-pencil blue editUser back" title="edit" type="button" data-toggle="modal" data-target=".edit-user-modal"/>
+                                                        <button class="btn glyphicon glyphicon-trash red back" title="delete" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="delete"/>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -443,8 +445,8 @@
                                                         <li>Project5</li>
                                                     </ul></td>
                                                     <td>
-                                                        <button class="btn glyphicon glyphicon-pencil blue editUser" title="edit" type="button" data-toggle="modal" data-target=".edit-modal-lg"/>
-                                                        <button class="btn glyphicon glyphicon-trash red" title="delete" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="delete"/>
+                                                        <button class="btn glyphicon glyphicon-pencil blue editUser back" title="edit" type="button" data-toggle="modal" data-target=".edit-user-modal"/>
+                                                        <button class="btn glyphicon glyphicon-trash red back" title="delete" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="delete"/>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -459,8 +461,8 @@
 
                                                     </ul></td>
                                                     <td>
-                                                        <button class="btn glyphicon glyphicon-pencil blue editUser" title="edit" type="button" data-toggle="modal" data-target=".edit-modal-lg"/>
-                                                        <button class="btn glyphicon glyphicon-trash red" title="delete" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="delete"/>
+                                                        <button class="btn glyphicon glyphicon-pencil blue editUser back" title="edit" type="button" data-toggle="modal" data-target=".edit-user-modal"/>
+                                                        <button class="btn glyphicon glyphicon-trash red back" title="delete" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="delete"/>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -476,8 +478,8 @@
                                                         <li>Project5</li>
                                                     </ul></td>
                                                     <td>
-                                                        <button class="btn glyphicon glyphicon-pencil blue editUser" title="edit" type="button" data-toggle="modal" data-target=".edit-modal-lg"/>
-                                                        <button class="btn glyphicon glyphicon-trash red" title="delete" type="button" data-toggle="tooltip" data-placement="left" data-original-title="delete"/>
+                                                        <button class="btn glyphicon glyphicon-pencil blue editUser back" title="edit" type="button" data-toggle="modal" data-target=".edit-user-modal"/>
+                                                        <button class="btn glyphicon glyphicon-trash red back" title="delete" type="button" data-toggle="tooltip" data-placement="left" data-original-title="delete"/>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -493,8 +495,8 @@
                                                         <li>Project5</li>
                                                     </ul></td>
                                                     <td>
-                                                        <button class="btn glyphicon glyphicon-pencil blue editUser" title="edit" type="button" data-toggle="modal" data-target=".edit-modal-lg"/>
-                                                        <button class="btn glyphicon glyphicon-trash red" title="delete" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="delete"/>
+                                                        <button class="btn glyphicon glyphicon-pencil blue editUser back" title="edit" type="button" data-toggle="modal" data-target=".edit-user-modal"/>
+                                                        <button class="btn glyphicon glyphicon-trash red back" title="delete" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="delete"/>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -510,8 +512,8 @@
                                                         <li>Project5</li>
                                                     </ul></td>
                                                     <td>
-                                                        <button class="btn glyphicon glyphicon-pencil blue editUser" title="edit" type="button" data-toggle="modal" data-target=".edit-modal-lg"/>
-                                                        <button class="btn glyphicon glyphicon-trash red" title="delete" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="delete"/>
+                                                        <button class="btn glyphicon glyphicon-pencil blue editUser back" title="edit" type="button" data-toggle="modal" data-target=".edit-user-modal"/>
+                                                        <button class="btn glyphicon glyphicon-trash red back" title="delete" type="button" data-toggle="tooltip" data-placement="left"  data-original-title="delete"/>
                                                     </td>
                                                 </tr>
                                                 </tbody>

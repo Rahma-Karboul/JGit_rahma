@@ -9,7 +9,7 @@
      var FirstName = rowValue[0].innerHTML;
      var LastName = rowValue[1].innerHTML;
      var Email = rowValue[2].innerHTML;
-     var status = rowValue[3].innerHTML;
+     var status = rowValue[3].firstChild.title;
      var admin = rowValue[4].innerHTML;
      var date = rowValue[5].innerHTML;
      var projects = rowValue[6].getElementsByTagName("li");
@@ -43,7 +43,7 @@ for(var i in projects){
  jQuery(".editProject").click(function () {
 
       var rowProject = jQuery(this).closest("tr")[0].cells;
-      var projectName = rowProject[0].innerHTML;
+      var projectName = rowProject[0].firstChild.textContent;
       var description = rowProject[1].innerHTML;
 
       var form = document.getElementById("formEditProject");
