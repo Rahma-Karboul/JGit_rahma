@@ -128,7 +128,7 @@
                                                 </select>
                                             </div>
                                     </div>
-                                        <div class="form-group">
+                                        <div class="item form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">SAP environment</label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <div class="">
@@ -139,7 +139,7 @@
 
                                             </div>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="item form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12"><span class="required"></span>
                                             </label>
                                             <div  class="col-md-6 col-sm-6 col-xs-12">
@@ -153,30 +153,10 @@
                                             </div>
                                         </div>
 
-                                        <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Technology <span class="required">*</span>
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" id="emoji-picker" required="required" class="form-control col-md-7 col-xs-12">
-                                            </div>
-                                        </div>
-                                    <div class="form-group">
-                                        <div  class="col-md-3 col-sm-3 col-xs-12">
-                                        </div>
-                                        <div  class="col-md-6 col-sm-6 col-xs-12">
-                                            <a class="test-emoji">
-                                                    <span class="image">
-                                                       <img th:src="@{/images/javaIcon.png}" style="width:30px;height:30px;">
-                                                    </span>
-                                            </a>
 
-                                        </div>
-                                        <!--div class="test-emoji">😊😉😉😍😍😍😛🐔</div-->
-                                        <div class="emoji-panel">
-                                            <!--button class="chat-input-tool">
-                                                <svg preserveAspectRatio="xMidYMid" viewBox="0 0 24 24" style="width: 18px; height: 18px;"><path d="M12 24C5.38 24 0 18.62 0 12S5.38 0 12 0s12 5.38 12 12-5.38 12-12 12zm0-22C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-2.9 0-5.56-1.75-6.9-4.57-.24-.5-.03-1.1.47-1.33.5-.24 1.1-.03 1.33.47C7.9 16.67 9.86 18 12 18c2.15 0 4.1-1.3 5.1-3.43.23-.5.83-.7 1.33-.47.5.23.7.83.47 1.33C17.58 18.25 14.93 20 12 20zm4-8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm-8 0c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" fill="#fff"></path></svg>
-                                            </button-->
-                                        </div>
+                                    <div class=" item form-group">
+
+
                                         <div class="intercom-composer-popover intercom-composer-emoji-popover">
                                             <div class="intercom-emoji-picker"><div class="intercom-composer-popover-header">
                                                 <input class="intercom-composer-popover-input" placeholder="Search" value="">
@@ -185,17 +165,20 @@
                                                     <div class="intercom-composer-popover-body">
                                                         <div class="intercom-emoji-picker-groups">
                                                             <div class="intercom-emoji-picker-group">
-                                                                <div class="intercom-emoji-picker-group-title">Frequently used</div>
-                                                                <span class="intercom-emoji-picker-emoji" title="thumbs_up"><img th:src="@{/images/javaIcon.png}" style="width:30px;height:30px;"> Java </span>
-                                                                <span class="intercom-emoji-picker-emoji" title="-1"><img th:src="@{/images/pngegg.png}" style="width:30px;height:30px;"></span>
-                                                                <span class="intercom-emoji-picker-emoji" title="sob"><img th:src="@{/images/pngegg.png}" style="width:30px;height:30px;"></span>
-                                                                <span class="intercom-emoji-picker-emoji" title="confused">😕</span>
-                                                                <span class="intercom-emoji-picker-emoji" title="neutral_face">😐</span>
-                                                                <span class="intercom-emoji-picker-emoji" title="blush">😊</span>
-                                                                <span class="intercom-emoji-picker-emoji" title="heart_eyes">😍</span>
+                                                                <div class="intercom-emoji-picker-group-title">Programming languages</div>
+                                                                <span class="intercom-emoji-picker-emoji" title="android" alt="java"><img th:src="@{/images/android.png}" style="width:40px;height:40px;"> </span>
+                                                                <span class="intercom-emoji-picker-emoji" title="java"><img th:src="@{/images/java.png}" style="width:40px;height:40px;"> </span>
+                                                                <span class="intercom-emoji-picker-emoji" title="php"><img th:src="@{/images/php.jpg}" style="width:40px;height:40px;"> </span>
+                                                                <span class="intercom-emoji-picker-emoji" title="cplus"><img th:src="@{/images/cplus.png}" style="width:40px;height:40px;"> </span>
+
+
+
                                                             </div>
                                                             <div class="intercom-emoji-picker-group">
-                                                                <div class="intercom-emoji-picker-group-title">People</div>
+                                                                <div class="intercom-emoji-picker-group-title">Frameworks</div>
+                                                                <span class="intercom-emoji-picker-emoji" title="spring"><img th:src="@{/images/spring.jpg}" style="width:40px;height:40px;"> </span>
+                                                                <span class="intercom-emoji-picker-emoji" title="node"><img th:src="@{/images/node.jpg}" style="width:40px;height:40px;"> </span>
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -206,6 +189,32 @@
                                     </div>
 
 
+
+
+                                    <!--icon  -->
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Technology <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6">
+                                            <div class="x_panel" id="emoji-picker">
+
+                                                <div class="x_content">
+                                                    <ul class="list-unstyled msg_list">
+                                                        <li>
+                                                            <a id="test-emoji">
+
+
+
+                                                            </a>
+                                                        </li>
+
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- icon  -->
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
                                     <div  class="col-md-1 col-sm-6 col-xs-12"></div>
@@ -419,6 +428,15 @@
         </div>
     </div>
     <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+            <div class="pull-right">
+                DOFAN - Next Gen by <a href=" ">Focus Corporation</a>
+            </div>
+            <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
 
 </div>
 </div>

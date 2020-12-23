@@ -72,7 +72,8 @@ for(var i in projects){
  });
 
  $(document).on("click",".intercom-emoji-picker-emoji",function(e){
-     $(".test-emoji").append($(this).html());
+     //$(".test-emoji").append($(this).html());
+     $("#test-emoji").append('<span class="image">'+$(this).html()+'</span>');
  });
 
  $('.intercom-composer-popover-input').on('input', function() {
