@@ -9,6 +9,9 @@ input.disabled:hover {
 .back {
     background-color: transparent !important;
 }
+.aligncenter {
+    text-align: center;
+}
 
 .timeline .tags_x {
     position: absolute;
