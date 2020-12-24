@@ -186,7 +186,9 @@ html , body{
 }
 .site_title img {
     max-height: 66px;
-    max-width: 180px;
+    /*max-width: 180px;*/
+    /*added the new value for the dofan logo*/
+    max-width: 39px;
 }
 .nav-sm .main_container .top_nav {
     display: block;
