@@ -121,11 +121,11 @@
         </div>
         <!-- Bar Graph -->
 
-        <!-- project list -->
+        <!-- Pipelines list -->
         <div class="col-md-12">
           <div class="x_panel">
             <div class="x_title">
-              <h2>Projects</h2>
+              <h2>Pipelines</h2>
               <ul class="nav navbar-right panel_toolbox">
                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                 </li>
@@ -145,25 +145,26 @@
             </div>
             <div class="x_content">
 
-              <p>List of active projects</p>
+              <p>Last of active pipelines</p>
 
-              <!-- start project list -->
+              <!-- start Pipeline list -->
               <table class="table table-striped projects">
                 <thead>
                 <tr>
                   <th style="width: 1%">#</th>
-                  <th style="width: 20%">Project Name</th>
+                  <th style="width: 20%">Pipeline Name</th>
                   <th>Owner</th>
-                  <th>Job Progress</th>
+                  <th>Health</th>
+                  <th>Status</th>
                   <th>Provider</th>
-                  <th style="width: 20%">Related Jobs</th>
+                  <th style="width: 20%">Action</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                   <td>#</td>
                   <td>
-                    <a>Project_1</a>
+                    <a>Pipeline_1</a>
                     <br />
                     <small>Created 01.01.2021</small>
                   </td>
@@ -174,24 +175,35 @@
                       </li>
                     </ul>
                   </td>
-                  <td class="project_progress">
-                    <div class="progress progress_sm">
-                      <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="80"></div>
-                    </div>
-                    <small>80% Complete</small>
+                  <td>
+                    <ul class="list-inline">
+                      <li>
+                        <img src="https://www.jenkins.io/doc/book/resources/blueocean/icons/weather/cloudy.svg"
+                             class="avatar" alt="Avatar">
+                      </li>
+                    </ul>
+                  </td>
+                  <td>
+                    <ul class="list-inline">
+                      <li>
+                        <img src="https://www.jenkins.io/doc/book/resources/blueocean/dashboard/status-unstable.png"
+                             class="avatar" alt="Avatar">
+                      </li>
+                    </ul>
                   </td>
                   <td>
                     <img th:src="@{/images/GitHub-Mark.png}" >
                   </td>
                   <td>
-                    <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Jobs</a>
+                    <a href="#" class="btn btn-success btn-xs"><i class="fa fa-play"></i> Run</a>
+                    <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Build</a>
                     <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
                   </td>
                 </tr>
                 <tr>
                   <td>#</td>
                   <td>
-                    <a>Project_2</a>
+                    <a>Pipeline_2</a>
                     <br />
                     <small>Created 01.01.2021</small>
                   </td>
@@ -202,24 +214,35 @@
                       </li>
                     </ul>
                   </td>
-                  <td class="project_progress">
-                    <div class="progress progress_sm">
-                      <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="47"></div>
-                    </div>
-                    <small>47% Complete</small>
+                  <td>
+                    <ul class="list-inline">
+                      <li>
+                        <img src="https://www.jenkins.io/doc/book/resources/blueocean/icons/weather/sunny.svg"
+                             class="avatar" alt="Avatar">
+                      </li>
+                    </ul>
+                  </td>
+                  <td>
+                    <ul class="list-inline">
+                      <li>
+                        <img src="https://www.jenkins.io/doc/book/resources/blueocean/dashboard/status-passed.png"
+                             class="avatar" alt="Avatar">
+                      </li>
+                    </ul>
                   </td>
                   <td>
                     <img th:src="@{/images/GitHub-Mark.png}" >
                   </td>
                   <td>
-                    <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Jobs</a>
+                    <a href="#" class="btn btn-success btn-xs"><i class="fa fa-play"></i> Run</a>
+                    <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Build</a>
                     <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
                   </td>
                 </tr>
                 <tr>
                   <td>#</td>
                   <td>
-                    <a>Project_3</a>
+                    <a>Pipeline_3</a>
                     <br />
                     <small>Created 01.01.2021</small>
                   </td>
@@ -230,17 +253,28 @@
                       </li>
                     </ul>
                   </td>
-                  <td class="project_progress">
-                    <div class="progress progress_sm">
-                      <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="77"></div>
-                    </div>
-                    <small>77% Complete</small>
+                  <td>
+                    <ul class="list-inline">
+                      <li>
+                        <img src="https://www.jenkins.io/doc/book/resources/blueocean/icons/weather/storm.svg"
+                             class="avatar" alt="Avatar">
+                      </li>
+                    </ul>
                   </td>
                   <td>
-                     <img th:src="@{/images/GitHub-Mark.png}" >
+                    <ul class="list-inline">
+                      <li>
+                        <img src="https://www.jenkins.io/doc/book/resources/blueocean/dashboard/status-failed.png"
+                             class="avatar" alt="Avatar">
+                      </li>
+                    </ul>
                   </td>
                   <td>
-                    <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Jobs</a>
+                    <img th:src="@{/images/GitHub-Mark.png}" >
+                  </td>
+                  <td>
+                    <a href="#" class="btn btn-success btn-xs"><i class="fa fa-play"></i> Run</a>
+                    <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Build</a>
                     <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
                   </td>
                 </tr>
