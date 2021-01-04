@@ -59,6 +59,38 @@ for(var i in projects){
            }
       });
  });*/
+ jQuery(".editUserInfos").click(function () {
+
+     var fullname = document.getElementById("fullname").textContent;
+     var job = document.getElementById("job").textContent;
+
+     var perso = document.getElementById("perso").getElementsByTagName('li');
+     var role = perso[0].innerText;
+     var email = perso[1].innerText;
+     var phone = perso[2].innerText;
+     
+     var addressInfos = document.getElementById("address").getElementsByTagName('li');
+     var company = addressInfos[0].innerText;
+
+     var addressArray = addressInfos[1].innerText.split(",");
+     var address = addressArray[0];
+     var city = addressArray[1];
+
+     var country = addressInfos[2].innerText;
+
+     var form = document.getElementById("formEditProfile");
+
+     form.elements["fullname"].value = fullname;
+     form.elements["job"].value = job;
+     form.elements["role"].value = role;
+     form.elements["email"].value = email;
+     form.elements["phone"].value = phone;
+     form.elements["company"].value = company;
+     form.elements["address"].value = address;
+     form.elements["city"].value = city;
+     form.elements["country"].value = "TN";
+
+ });
 
  $(document).on("click","#emoji-picker",function(e){
      e.stopPropagation();
