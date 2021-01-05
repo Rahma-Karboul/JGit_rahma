@@ -114,6 +114,23 @@ for(var i in projects){
      form.elements["skillVal4"].value = skillVal4;
 
  });
+ jQuery(".mybuttonoverlap").click(function () {
+var parentDiv =  jQuery(this).closest("div").parent();
+var childs = parentDiv.children();
+var childDiv = childs[1].children;
+var project = childs[0].innerText;
+var client = childDiv[0].innerText.split(":")[1];
+var date = childDiv[2].innerText.split(":")[1];
+var workPercentage = childDiv[4].innerText.split(":")[1];
+ var workload = workPercentage.replace("%","");
+
+     var form = document.getElementById("formEditUserProjects");
+     form.elements["project"].value = project;
+     form.elements["client"].value = client;
+     form.elements["date"].value = date;
+     form.elements["workload"].value = workload;
+
+ });
 
  $(document).on("click","#emoji-picker",function(e){
      e.stopPropagation();
