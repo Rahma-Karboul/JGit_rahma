@@ -104,7 +104,6 @@ for(var i in projects){
      var skillVal4 = document.getElementById("skillVal4").textContent.replace("%","");
 
      var form = document.getElementById("formEditSkills");
-
      form.elements["skill1"].value = skill1;
      form.elements["skill2"].value = skill2;
      form.elements["skill3"].value = skill3;
