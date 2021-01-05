@@ -514,12 +514,12 @@
                       <h2>Projects Worked On</h2>
                       <ul class="nav navbar-right panel_toolbox">
                         <li>
-                          <button type="button" class="btn glyphicon glyphicon-plus blue back" title="add project"  data-toggle="modal" data-target=".add-user-projects-modal"></button>
+                          <button id="addUserProject" type="button" class="btn glyphicon glyphicon-plus blue back" title="add project"  data-toggle="modal" data-target=".add-user-projects-modal"></button>
                           <div class="modal fade add-user-projects-modal" tabindex="-1" role="dialog" aria-hidden="true">
                             <div class="modal-dialog modal-lg">
                               <div class="modal-content">
                                 <div class="modal-body">
-                                  <form id="formAddUserProjects" class="form-horizontal form-label-left" action="" method="post">
+                                  <form id="formAddUserProject" class="form-horizontal form-label-left" action="" method="post">
                                     <span class="section">Add Project Working On</span>
 
                                     <div class="field item form-group">
@@ -551,8 +551,13 @@
                                     </div>
                                     <div class="field item form-group">
                                       <label class="col-form-label col-md-3 col-sm-3  label-align">Workload<span class="required">*</span></label>
-                                      <div class="col-md-4 col-sm-4">
-                                        <input class="form-control" name="workload" type="number" required="required" />
+                                      <div class="col-md-6 col-sm-6">
+                                        <div class="col-md-5 col-sm-5">
+                                          <input class="" id="workLoad" name="workload" type="range" min="0" max="100" value="0"/>
+                                        </div>
+                                        <div class="col-md-1 col-sm-1">
+                                          <span class="" id="workLoadVal"></span>
+                                        </div>
                                       </div>
                                     </div>
                                     <div class="ln_solid">
@@ -574,7 +579,7 @@
                             <div class="modal-dialog modal-lg">
                               <div class="modal-content">
                                 <div class="modal-body">
-                                  <form id="formEditUserProjects" class="form-horizontal form-label-left" action="" method="post">
+                                  <form id="formEditUserProject" class="form-horizontal form-label-left" action="" method="post">
                                     <span class="section">Edit Workload Project</span>
 
                                     <div class="field item form-group">
@@ -605,8 +610,13 @@
                                     </div>
                                     <div class="field item form-group">
                                         <label class="col-form-label col-md-3 col-sm-3 label-align">Workload<span class="required">*</span></label>
-                                      <div class="col-md-4 col-sm-4">
-                                        <input class="form-control" name="workload" type="number" required="required" />
+                                      <div class="col-md-6 col-sm-6">
+                                        <div class="col-md-5 col-sm-5">
+                                          <input class="" id="workLoadEdit" name="workload" type="range" min="0" max="100"/>
+                                        </div>
+                                        <div class="col-md-1 col-sm-1">
+                                          <span class="" id="workLoadEditVal"></span>
+                                        </div>
                                       </div>
 
                                     </div>

@@ -40,6 +40,22 @@ for(var i in projects){
     jQuery(t).parent()[0].click();
 }
  });
+ jQuery("#addUserProject").click(function () {
+
+     var elt = jQuery(this);
+
+    // var form = document.getElementById("formAddUserProject");
+
+     //workload slider
+     var workSlider = document.getElementById("workLoad");
+     var workOutput = document.getElementById("workLoadVal");
+     workOutput.innerHTML = workSlider.value + "%";
+
+     workSlider.oninput = function() {
+         workOutput.innerHTML = this.value + "%";
+     }
+
+ });
  jQuery(".editProject").click(function () {
 
       var rowProject = jQuery(this).closest("tr")[0].cells;
@@ -157,11 +173,21 @@ var date = childDiv[2].innerText.split(":")[1];
 var workPercentage = childDiv[4].innerText.split(":")[1];
  var workload = workPercentage.replace("%","");
 
-     var form = document.getElementById("formEditUserProjects");
+     var form = document.getElementById("formEditUserProject");
      form.elements["project"].value = project;
      form.elements["client"].value = client;
      form.elements["date"].value = date;
      form.elements["workload"].value = workload;
+
+     // edit workload slider
+     var workSlider1 = document.getElementById("workLoadEdit");
+     var workOutput1 = document.getElementById("workLoadEditVal");
+     workOutput1.innerHTML = workSlider1.value + "%";
+
+     workSlider1.oninput = function() {
+         workOutput1.innerHTML = this.value + "%";
+     }
+
 
  });
 
