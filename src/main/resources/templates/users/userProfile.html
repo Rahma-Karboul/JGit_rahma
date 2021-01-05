@@ -229,8 +229,8 @@
                                             <option value="AM" title="Arménie">Arménie</option>
                                             <option value="AW" title="Aruba">Aruba</option>
                                             <option value="AU" title="Australie">Australie</option>
-                                            <option value="AT" title="Autriche">Autriche</option><
-                                            option value="AZ" title="Azerbaïdjan">Azerbaïdjan</option>
+                                            <option value="AT" title="Autriche">Autriche</option>
+                                            <option value="AZ" title="Azerbaïdjan">Azerbaïdjan</option>
                                             <option value="BS" title="Bahamas">Bahamas</option>
                                             <option value="BH" title="Bahreïn">Bahreïn</option>
                                             <option value="BD" title="Bangladesh">Bangladesh</option>
@@ -361,26 +361,68 @@
                           <h2>Skills</h2>
                           <ul class="nav navbar-right panel_toolbox">
                             <li>
-                              <button type="button" class="btn glyphicon glyphicon-pencil blue back" title="edit skills"  data-toggle="modal" data-target=".edit-skills-modal"></button>
+                              <button type="button" class="btn glyphicon glyphicon-pencil editUserSkills blue back" title="edit skills"  data-toggle="modal" data-target=".edit-skills-modal"></button>
 
                               <div class="modal fade edit-skills-modal" tabindex="-1" role="dialog" aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
                                   <div class="modal-content">
                                     <div class="modal-body">
-                                      <form class="form-horizontal form-label-left" action="" method="post">
+                                      <form id="formEditSkills" class="form-horizontal form-label-left" action="" method="post">
                                         <span class="section">User Skills</span>
 
                                         <div class="field item form-group">
-                                          <label class="col-form-label col-md-3 col-sm-3  label-align">Name<span class="required">*</span></label>
-                                          <div class="col-md-6 col-sm-6">
-                                            <input class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" required="required" />
+                                        <div class="col-md-3 col-sm-3">
+                                          <select class="col-form-label form-control" tabindex="-1" name="skill1" >
+                                            <option value="Finance" title="Costa Rica">Finance</option>
+                                            <option value="Communication" title="Côte d’Ivoire">Communication</option>
+                                            <option value="Management" title="Costa Rica">Management</option>
+                                            <option value="Planning" title="Côte d’Ivoire">Planning</option>
+                                          </select>
+                                        </div>
+                                          <div class="col-md-2 col-sm-2">
+                                            <input class="form-control" name="skillVal1" type="number" required="required" />
                                           </div>
                                         </div>
                                         <div class="field item form-group">
-                                          <label class="col-form-label col-md-3 col-sm-3  label-align">Description<span class="required">*</span></label>
-                                          <div class="col-md-6 col-sm-6">
-                                            <textarea class="form-control" required="required" name='description'></textarea></div>
+                                          <div class="col-md-3 col-sm-3">
+                                            <select class="col-form-label form-control" tabindex="-1" name="skill2" >
+                                              <option value="Finance" title="Costa Rica">Finance</option>
+                                              <option value="Communication" title="Côte d’Ivoire">Communication</option>
+                                              <option value="Management" title="Costa Rica">Management</option>
+                                              <option value="Planning" title="Côte d’Ivoire">Planning</option>
+                                            </select>
+                                          </div>
+                                          <div class="col-md-2 col-sm-2">
+                                            <input class="form-control" name="skillVal2" type="number" required="required" />
+                                          </div>
                                         </div>
+                                        <div class="field item form-group">
+                                          <div class="col-md-3 col-sm-3">
+                                            <select class="col-form-label form-control" tabindex="-1" name="skill3" >
+                                              <option value="Finance" title="Costa Rica">Finance</option>
+                                              <option value="Communication" title="Côte d’Ivoire">Communication</option>
+                                              <option value="Management" title="Costa Rica">Management</option>
+                                              <option value="Planning" title="Côte d’Ivoire">Planning</option>
+                                            </select>
+                                          </div>
+                                          <div class="col-md-2 col-sm-2">
+                                            <input class="form-control" name="skillVal3" type="number" required="required" />
+                                          </div>
+                                        </div>
+                                        <div class="field item form-group">
+                                          <div class="col-md-3 col-sm-3">
+                                            <select class="col-form-label form-control" tabindex="-1" name="skill4" >
+                                              <option value="Finance" title="Costa Rica">Finance</option>
+                                              <option value="Communication" title="Côte d’Ivoire">Communication</option>
+                                              <option value="Management" title="Costa Rica">Management</option>
+                                              <option value="Planning" title="Côte d’Ivoire">Planning</option>
+                                            </select>
+                                          </div>
+                                          <div class="col-md-2 col-sm-2">
+                                            <input class="form-control" name="skillVal4" type="number" required="required" />
+                                          </div>
+                                        </div>
+
                                         <div class="ln_solid">
                                           <div class="form-group">
                                             <div class="col-md-9 offset-md-3">
@@ -408,38 +450,38 @@
                            <div class="col-md-3 col-sm-3">
                             <div class="">
                               <span class="chart" data-percent="70">
-                                              <span class="percent">70%</span>
+                                              <span class="percent" id="skillVal1">70%</span>
                               </span>
                             </div>
-                            <h4 class="name_title aligncenter">Finance</h4>
+                            <h4 class="name_title aligncenter" id="skill1">Finance</h4>
                            </div>
                         <div class="col-md-3 col-sm-3">
                         <div class="">
                               <span class="chart" data-percent="85">
-                                              <span class="percent">85%</span>
+                                              <span class="percent" id="skillVal2">85%</span>
                               </span>
                             </div>
-                            <h4 class="name_title aligncenter">Management</h4>
+                            <h4 class="name_title aligncenter" id="skill2">Management</h4>
 
                         </div>
                         <div class="col-md-3 col-sm-3">
 
                         <div class="">
                               <span class="chart" data-percent="90">
-                                              <span class="percent">90%</span>
+                                              <span class="percent" id="skillVal3">90%</span>
                               </span>
                             </div>
-                            <h4 class="name_title aligncenter">Communication</h4>
+                            <h4 class="name_title aligncenter" id="skill3">Communication</h4>
 
                         </div>
                         <div class="col-md-3 col-sm-3">
 
                           <div class="">
                               <span class="chart" data-percent="75">
-                                              <span class="percent">75%</span>
+                                              <span class="percent" id="skillVal4">75%</span>
                               </span>
                           </div>
-                          <h4 class="name_title aligncenter">Planning</h4>
+                          <h4 class="name_title aligncenter" id="skill4">Planning</h4>
 
                         </div>
 

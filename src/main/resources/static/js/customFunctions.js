@@ -92,6 +92,30 @@ for(var i in projects){
 
  });
 
+ jQuery(".editUserSkills").click(function () {
+
+     var skill1 = document.getElementById("skill1").textContent;
+     var skill2 = document.getElementById("skill2").textContent;
+     var skill3 = document.getElementById("skill3").textContent;
+     var skill4 = document.getElementById("skill4").textContent;
+     var skillVal1 = document.getElementById("skillVal1").textContent.replace("%","");
+     var skillVal2 = document.getElementById("skillVal2").textContent.replace("%","");
+     var skillVal3 = document.getElementById("skillVal3").textContent.replace("%","");
+     var skillVal4 = document.getElementById("skillVal4").textContent.replace("%","");
+
+     var form = document.getElementById("formEditSkills");
+
+     form.elements["skill1"].value = skill1;
+     form.elements["skill2"].value = skill2;
+     form.elements["skill3"].value = skill3;
+     form.elements["skill4"].value = skill4;
+     form.elements["skillVal1"].value = skillVal1;
+     form.elements["skillVal2"].value = skillVal2;
+     form.elements["skillVal3"].value = skillVal3;
+     form.elements["skillVal4"].value = skillVal4;
+
+ });
+
  $(document).on("click","#emoji-picker",function(e){
      e.stopPropagation();
      $('.intercom-composer-emoji-popover').toggleClass("active");
