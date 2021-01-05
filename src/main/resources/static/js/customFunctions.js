@@ -113,6 +113,39 @@ for(var i in projects){
      form.elements["skillVal3"].value = skillVal3;
      form.elements["skillVal4"].value = skillVal4;
 
+     //slider1
+     var slider1 = document.getElementById("valueSkill1");
+     var output1 = document.getElementById("value1");
+     output1.innerHTML = slider1.value + "%";
+
+     slider1.oninput = function() {
+         output1.innerHTML = this.value + "%";
+     }
+//slider2
+     var slider2 = document.getElementById("valueSkill2");
+     var output2 = document.getElementById("value2");
+     output2.innerHTML = slider2.value + "%";
+
+     slider2.oninput = function() {
+         output2.innerHTML = this.value + "%";
+     }
+//slider3
+     var slider3 = document.getElementById("valueSkill3");
+     var output3 = document.getElementById("value3");
+     output3.innerHTML = slider3.value + "%";
+
+     slider3.oninput = function() {
+         output3.innerHTML = this.value + "%";
+     }
+//slider4
+     var slider4 = document.getElementById("valueSkill4");
+     var output4 = document.getElementById("value4");
+     output4.innerHTML = slider4.value + "%";
+
+     slider4.oninput = function() {
+         output4.innerHTML = this.value + "%";
+     }
+
  });
  jQuery(".mybuttonoverlap").click(function () {
 var parentDiv =  jQuery(this).closest("div").parent();
