@@ -311,7 +311,7 @@
 
                         </ul>
                         <ul class="list-unstyled user_data col-md-6 col-sm-6" id="address">
-                            <li><i class="glyphicon glyphicon-home"></i> Focus International
+                            <li><i class="glyphicon glyphicon-home"></i> Focus
                             </li>
                           <li><i class="glyphicon glyphicon-map-marker"></i> ghazela, Ariana
                           </li>
@@ -499,8 +499,62 @@
                       <h2>Projects Worked On</h2>
                       <ul class="nav navbar-right panel_toolbox">
                         <li>
-                          <!--<button type="button" class="btn glyphicon glyphicon-pencil blue back" title="edit projects"  data-toggle="modal" data-target=".edit-user-projects-modal"></button>
--->
+                          <button type="button" class="btn glyphicon glyphicon-plus blue back" title="add project"  data-toggle="modal" data-target=".add-user-projects-modal"></button>
+                          <div class="modal fade add-user-projects-modal" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                              <div class="modal-content">
+                                <div class="modal-body">
+                                  <form id="formAddUserProjects" class="form-horizontal form-label-left" action="" method="post">
+                                    <span class="section">User Projects</span>
+
+                                    <div class="field item form-group">
+
+                                      <label class="col-form-label col-md-3 col-sm-3  label-align">Project<span class="required">*</span></label>
+
+                                      <div class="col-md-6 col-sm-6">
+                                        <select class="col-form-label form-control" tabindex="-1" name="project" >
+                                          <option value="Early Watch Alert" title="">Early Watch Alert</option>
+                                          <option value="Stser Runtime" title="">Stser Runtime</option>
+                                          <option value="Object List" title="">Object List</option>
+                                        </select>
+                                      </div>
+
+                                    </div>
+
+                                    <div class="field item form-group">
+                                      <label class="col-form-label col-md-3 col-sm-3  label-align">Client<span class="required">*</span></label>
+                                      <div class="col-md-6 col-sm-6">
+                                        <input class="form-control" name="client" type="text" required="required" />
+                                      </div>
+                                    </div>
+                                    <div class="field item form-group">
+                                      <label class="col-form-label col-md-3 col-sm-3  label-align">Started From<span class="required">*</span></label>
+                                      <div class="col-md-6 col-sm-6">
+                                        <input class="form-control" name="date" type="date" required="required" />
+                                      </div>
+
+                                    </div>
+                                    <div class="field item form-group">
+                                      <label class="col-form-label col-md-3 col-sm-3  label-align">Workload<span class="required">*</span></label>
+                                      <div class="col-md-4 col-sm-4">
+                                        <input class="form-control" name="workload" type="number" required="required" />
+                                      </div>
+                                    </div>
+                                    <div class="ln_solid">
+                                      <div class="form-group">
+                                        <div class="col-md-9 offset-md-3">
+                                          <button type='button' class="btn btn-danger glyphicon glyphicon-remove pull-right"></button>
+
+                                          <button type='submit' class="btn btn-success glyphicon glyphicon-ok pull-right"></button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </form>
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
                           <div class="modal fade edit-user-projects-modal" tabindex="-1" role="dialog" aria-hidden="true">
                             <div class="modal-dialog modal-lg">
                               <div class="modal-content">
@@ -509,13 +563,35 @@
                                     <span class="section">User Projects</span>
 
                                     <div class="field item form-group">
+                                      <label class="col-form-label col-md-3 col-sm-3 label-align">Project<span class="required">*</span></label>
 
-                                      <div class="col-md-3 col-sm-3">
-                                        <label class="col-form-label col-md-3 col-sm-3  label-align">Early Watch Alert<span class="required">*</span></label>
-
+                                      <div class="col-md-6 col-sm-6">
+                                        <select class="col-form-label form-control" tabindex="-1" name="project" disabled>
+                                          <option value="Early Watch Alert" title="">Early Watch Alert</option>
+                                          <option value="Stser Runtime" title="">Stser Runtime</option>
+                                          <option value="Object List" title="">Object List</option>
+                                        </select>
                                       </div>
-                                      <div class="col-md-2 col-sm-2">
-                                        <input class="form-control" name="skillVal3" type="number" required="required" />
+
+                                    </div>
+
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align">Client<span class="required">*</span></label>
+                                      <div class="col-md-6 col-sm-6">
+                                        <input class="form-control" name="client" type="text" required="required" />
+                                      </div>
+                                    </div>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align">Started From<span class="required">*</span></label>
+                                      <div class="col-md-6 col-sm-6">
+                                        <input class="form-control" name="date" type="date" required="required" />
+                                      </div>
+
+                                    </div>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align">Workload<span class="required">*</span></label>
+                                      <div class="col-md-4 col-sm-4">
+                                        <input class="form-control" name="workload" type="number" required="required" />
                                       </div>
 
                                     </div>
