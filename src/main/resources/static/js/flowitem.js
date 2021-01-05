@@ -13,11 +13,13 @@ flowjs.flowItem = function flowItem(x, y, text, radius, listener){
     this.text = text || "Hello";
     this.link = "#";
     this.font = "Helvetica";
-    this.fontSize = "12px";
-    this.strokeWidth = 2;
+    this.fontSize = "15px";
+    this.strokeWidth = 6;
     
     this.circle = new createjs.Shape();
     this.textShape = new createjs.Text();
+    this.textShape.lineWidth = 100;
+    //this.textShape.textAlign = "center";
     
     
     this.listener = listener || function(){/*override this function*/};

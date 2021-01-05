@@ -13,14 +13,14 @@ flowjs.DiFlowChart = function DiFlowChart(canvasId, gGraph){
     
     this.itemRadius = 15;
     this.yJumpSize =
-        this.itemRadius * 4;
+        this.itemRadius * 6;
     this.xJumpSize = this.itemRadius * 9;
     
-    this.lineWidth = 7;
+    this.lineWidth = 5;
     this.color = "#0984e3";
     this.background = "white";
     
-    this.startX = (this.width/2) - ((this.graph.getLongestLength()-1)*(this.xJumpSize)/2);
+    this.startX =  10;//(this.width/2) - ((this.graph.getLongestLength()-1)*(this.xJumpSize)/2);
     this.startY = this.height / 2;
 
     this.stage.canvas.style.background = this.background;
