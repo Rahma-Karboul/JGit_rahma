@@ -9,7 +9,12 @@ input.disabled:hover {
 .back {
     background-color: transparent !important;
 }
-
+.mydivouter:hover .mybuttonoverlap{
+    display:block;
+}
+.mybuttonoverlap{
+    display: none;
+}
 .aligncenter {
     text-align: center;
 }
