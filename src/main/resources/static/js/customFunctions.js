@@ -97,13 +97,13 @@ for(var i in projects){
 
      var c = new flowjs.DiGraph();
      c.addPaths([
-         ["Build", "local test"],
-         ["Build", "aa"],
-         ["local test", "Remote tests"],
-         ["aa", "Remote tests"],
+         ["Build", "Backend Integration Tests"],["Build", "Frontend Integration Tests"],
+
+         ["Backend Integration Tests", "Remote tests"],
+         ["Frontend Integration Tests", "Remote tests"],
+
          ["Remote tests", "Quality check"],
-         [ "Quality check","Third party checks"],
-         ["Third party checks", "Artifact deployement"],
+         [ "Quality check" , "Artifact deployement"],
          ["Artifact deployement","Production deployement"]
      ]);
 
@@ -142,10 +142,10 @@ for(var i in projects){
          setTimeout(function(){
              flowChart.updateItem(itemId, function(item){
                  item.flowItem.toggleFlashing();
-                 item.flowItem.color = "red";
+                 item.flowItem.color = "#00b894";
                  if (item.connectors === undefined){return;}
                  item.connectors.forEach(function(conn){
-                     conn.color = "red";
+                     conn.color = "#00b894";
                  });
              });
          }, timeout);
