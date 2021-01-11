@@ -9,6 +9,10 @@ input.disabled:hover {
 .back {
     background-color: transparent !important;
 }
+.pricing_features {
+    min-height: auto !important;
+}
+
 .mydivouter:hover .mybuttonoverlap{
     display:block;
 }
