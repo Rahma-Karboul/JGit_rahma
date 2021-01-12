@@ -21,4 +21,9 @@ public class JobController {
     public String builds() {
         return "/jobs/builds";
     }
+
+    @RequestMapping("/credentials")
+    public String credentials() {
+        return "/jobs/credentials";
+    }
 }
