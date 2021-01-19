@@ -27,8 +27,26 @@ flowjs.flowItem = function flowItem(x, y, text, radius, listener){
     
     var that = this;
     var onclick = function(){
-        console.log("click");   
-        window.open("https://www.google.tn/");
+        console.log("click");
+
+
+        // $('#home-tab').attr("aria-expanded","false") ;
+        // document.getElementById("tab_content1").className = "tab-pane fade"// document.getElementById("tab_content2").className;
+        $('#profile-tab2').trigger('click');//attr("aria-expanded","true") ;
+
+        $('#home-tab').trigger('mouseleave');
+
+
+/*
+        document.getElementById("tab_content3").className = "tab-pane fade active in" ; //contentClass ;
+
+        $('#myTab').children()[0].toggleClass('active');//className = " ";
+        $('#myTab').children().toArray()[2].className ="active";*/
+
+
+       // window.open("https://www.google.tn/");
+
+
     };
     
     var onmouseover = function(){
