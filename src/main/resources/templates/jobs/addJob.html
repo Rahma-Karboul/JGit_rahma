@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org" lang="en">
 <!-- :: is a header fragment selector -->
 <div th:replace="common/includes :: common-header" />
-
+<link th:rel="stylesheet" th:href="@{/css/iziToast.css} "/>
 <body class="nav-sm">
 <div class="container body">
     <div class="main_container">
@@ -434,8 +434,12 @@
                                                                     </label>
                                                             </div>
                                                             <div class="col-md-6">
-                                                            <input type="text" id="repositoryUrl" required="required" class="form-control col-xs-12" placeholder="Put your repository URL">
-                                                            </div>
+                                                                <form th:action="@{/testNexusConnection}" th:object="${newpipeline}" method="POST">
+                                                                    <input type="text" id ="artifactUrl" th:field="*{artifactUrl}" required="required" class="form-control col-xs-12" placeholder="Put your repository URL">
+                                                                    <input type="text" id ="artifactUsername" th:field="*{artifactUsername}" required="required" class="form-control col-xs-12" placeholder="Repository username">
+                                                                    <input type="text" id ="artifactPassword" th:field="*{artifactPassword}" required="required" class="form-control col-xs-12" placeholder="Repository password">
+                                                                    <button type="submit" class="btn btn-default btn-sm" >Test Connection</button>
+                                                                </form></div>
                                                         </div></div>
                                                 </div>
                                             </li>
@@ -512,6 +516,32 @@
 
 <!-- :: is a footer fragment selector -->
 <div th:replace="common/includes :: body-bottom-scripts" />
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/iziToast.min.js}"></script>
+<script>
+    $('button[type="submit"]').click(function (event) {
+        event.preventDefault();
+        //noinspection JSJQueryEfficiency
+        $.post("/testNexusConnection", {'artifactUrl': $('#artifactUrl').val(), 'artifactUsername': $('#artifactUsername').val(), 'artifactPassword': $('#artifactPassword').val()}, function () {
+            iziToast.show({
+                title: 'Success',
+                message: 'Provided artifact Url is valid',
+                position: 'topRight',
+                timeout: 500000,
+                color: 'green'
+            });
 
+        }).fail(function () {
+            iziToast.show({
+                title: 'Fail',
+                message: 'This is not a valid artifactUrl',
+                position: 'topRight',
+                color: 'red'
+            });
+        });
+    });
+</script>
 </body>
 </html>
