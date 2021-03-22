@@ -73,7 +73,7 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <form class="form-horizontal form-label-left" novalidate>
+                        <form th:object="${newCredential}" class="form-horizontal form-label-left" novalidate>
 
 
                         <div class="" role="tabpanel" data-example-id="togglable-tabs">
@@ -129,69 +129,6 @@
                                         <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target=".bs-example-modal-lg">
                                             <i class="fa fa-key"> </i> Add credentials
                                         </button>
-                                    </div>
-
-                                    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg">
-                                            <div class="modal-content">
-
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-                                                    </button>
-                                                    <h4 class="modal-title" id="myModalLabel">Add credential</h4>
-                                                </div>
-                                                <form class="form-horizontal form-label-left" action="" method="post">
-                                                    <div class="modal-body">
-                                                        <div class="item form-group">
-                                                            <label class="col-form-label col-md-3 col-sm-3  label-align" >Username<span class="required">*</span></label>
-                                                            <div class="col-md-6 col-sm-6">
-                                                                <input class="form-control" required="required" /></div>
-                                                        </div>
-                                                        <div class="item form-group">
-                                                            <label class="col-form-label col-md-3 col-sm-3  label-align" >Password<span class="required">*</span></label>
-                                                            <div class="col-md-6 col-sm-6">
-                                                                <input class="form-control password" name="password" required="required" type="password" /></div>
-                                                        </div>
-                                                        <div class="item form-group">
-                                                            <label class="col-form-label col-md-3 col-sm-3  label-align" >Position</label>
-                                                            <div class="col-md-6 col-sm-6">
-                                                                <input class="form-control email" name="email" /></div>
-                                                        </div>
-                                                        <div class="item form-group">
-                                                            <label class="col-form-label col-md-3 col-sm-3  label-align" >Email</label>
-                                                            <div class="col-md-6 col-sm-6">
-                                                                <input class="form-control email" name="email" required="required" type="email" /></div>
-                                                        </div>
-                                                        <div class="item form-group">
-                                                            <label class="col-form-label col-md-3 col-sm-3  label-align" >Type<span class="required">*</span></label>
-                                                            <div class="col-md-6 col-sm-6">
-                                                                <select required="required" class="form-control col-md-7 col-xs-12" tabindex="-1">
-                                                                    <option></option>
-                                                                    <option value="BA">Basic Authentication</option>
-
-                                                                </select></div>
-                                                        </div>
-                                                        <div class="item form-group">
-                                                            <label class="col-form-label col-md-3 col-sm-3  label-align" >Provider<span class="required">*</span></label>
-                                                            <div class="col-md-6 col-sm-6">
-                                                                <select required="required" class="form-control col-md-7 col-xs-12" tabindex="-1">
-                                                                    <option></option>
-                                                                    <option value="BA">GitHub</option>
-                                                                    <option value="BA">GitLab</option>
-                                                                    <option value="BA">Autre</option>
-                                                                </select></div>
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-primary">Create</button>
-                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
                                     </div>
                                         <div class="item form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">SAP environment</label>
@@ -432,15 +369,35 @@
                                                                     <label >
                                                                         <input type="checkbox"  class="js-switch"   />
                                                                     </label>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <form th:action="@{/testNexusConnection}" th:object="${newpipeline}" method="POST">
-                                                                    <input type="text" id ="artifactUrl" th:field="*{artifactUrl}" required="required" class="form-control col-xs-12" placeholder="Put your repository URL">
-                                                                    <input type="text" id ="artifactUsername" th:field="*{artifactUsername}" required="required" class="form-control col-xs-12" placeholder="Repository username">
-                                                                    <input type="text" id ="artifactPassword" th:field="*{artifactPassword}" required="required" class="form-control col-xs-12" placeholder="Repository password">
-                                                                    <button type="submit" class="btn btn-default btn-sm" >Test Connection</button>
-                                                                </form></div>
-                                                        </div></div>
+                                                            </div></div>
+
+                                                        <div class="item form-group">
+                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Repository URL <span class="required">*</span>
+                                                            </label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <form th:action="@{/testNexusConnection}" th:object="${newpipeline}" method="POST">
+                                                                <input type="text" id ="artifactUrl" th:field="*{artifactUrl}" required="required" class="form-control col-md-7 col-xs-12" placeholder="Put your repository URL">
+                                                                <!--label class="control-label col-md-3 col-sm-3 col-xs-12">Repository Credentials</label-->
+                                                                <input type="text" id ="artifactUsername" th:field="*{artifactUsername}" required="required" class="form-control col-md-7 col-xs-12" placeholder="Repository username">
+                                                                <input type="text" id ="artifactPassword" th:field="*{artifactPassword}" required="required" class="form-control col-md-7 col-xs-12" placeholder="Repository password">
+                                                                    <!--label class="control-label col-md-3 col-sm-3 col-xs-12">Repository Credentials <span class="required">*</span></label>
+                                                                    <div  class="col-md-6 col-sm-6 col-xs-12">
+                                                                        <select required="required" class="form-control col-md-7 col-xs-12" tabindex="-1">
+                                                                            <option></option>
+                                                                            <option value="AK">mavenuser, m@venp@$$word</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target=".bs-example-modal-lg">
+                                                                        <i class="fa fa-key"> </i> Add credentials
+                                                                    </button-->
+
+                                                                <button id="testCnxBtn" type="submit" class="btn btn-default btn-sm" >Test Connection</button>
+                                                            </form>
+                                                            <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target=".bs-example-modal-lg">
+                                                                <i class="fa fa-key"> </i> Add credentials
+                                                            </button></div>
+                                                        </div>
+                                                        </div>
                                                 </div>
                                             </li>
 
@@ -493,6 +450,55 @@
                         </form>
                     </div>
                 </div>
+                <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">Add credential</h4>
+                            </div>
+                            <form class="form-horizontal form-label-left" action="#" method="post" th:action="@{/save}">
+                                <div class="modal-body">
+                                    <div class="item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align" >Provider<span class="required">*</span></label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <select    class="form-control col-md-7 col-xs-12" tabindex="-1">
+
+                                                <option  th:value="GitHub">GitHub</option>
+                                                <option th:value="GitLab">GitLab</option>
+                                                <option th:value="Autre">Autre</option>
+                                            </select></div>
+                                    </div>
+
+                                    <div class="item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align" >Username<span class="required">*</span></label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input class="form-control" required="required" /></div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align" >Email</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input id="email" class="form-control email" name="email" required="required" type="email" /></div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align" >Password<span class="required">*</span></label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input id="password" class="form-control password" name="password" required="required" type="password" /></div>
+                                    </div>
+
+                                </div>
+
+                                <div class="modal-footer">
+                                    <input type="submit" value="Submit" /></button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -521,7 +527,7 @@
 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 <script th:src="@{/js/iziToast.min.js}"></script>
 <script>
-    $('button[type="submit"]').click(function (event) {
+    $('#testCnxBtn').click(function (event) {
         event.preventDefault();
         //noinspection JSJQueryEfficiency
         $.post("/testNexusConnection", {'artifactUrl': $('#artifactUrl').val(), 'artifactUsername': $('#artifactUsername').val(), 'artifactPassword': $('#artifactPassword').val()}, function () {

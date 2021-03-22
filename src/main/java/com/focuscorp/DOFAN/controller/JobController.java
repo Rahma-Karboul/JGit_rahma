@@ -1,5 +1,13 @@
 package com.focuscorp.DOFAN.controller;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import com.focuscorp.DOFAN.model.Credential;
+import com.focuscorp.DOFAN.service.CredentialService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 import com.focuscorp.DOFAN.model.Pipeline;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -15,6 +23,9 @@ import java.util.Base64;
 
 @Controller
 public class JobController {
+
+    @Autowired
+    private CredentialService credentialService;
 
     @RequestMapping("/jobs")
     public String jobs() {
@@ -82,8 +93,43 @@ public class JobController {
         return "/jobs/builds";
     }
 
-    @RequestMapping("/credentials")
-    public String credentials() {
+    @RequestMapping(value ="/credentials", method = RequestMethod.GET)
+    public String credentials(Model model) {
+        model.addAttribute("newCredential", new Credential());
+        //model.addAttribute("EditableCredential", new Credential());
+
+        List<Credential> list = (List<Credential>)credentialService.findAllCredentials( );
+        model.addAttribute("credentials",list);
         return "/jobs/credentials";
+    }
+
+    @RequestMapping(value = "/addCredential", method = RequestMethod.POST)
+    public String addCredential(@ModelAttribute("newCredential") Credential credential, Model model,HttpServletRequest request) {
+        String referer = request.getHeader("Referer");
+
+        credentialService.addCredential(credential);
+        //model.addAttribute("user", userService.findAllUsers());
+        //return "redirect:/credentials";
+        return "redirect:"+ referer;
+    }
+
+    @GetMapping("/findOne")
+    @ResponseBody
+    public Credential findOne(String id) {
+        return credentialService.findById(id);
+    }
+
+    @PostMapping("/save")
+    public String save(Credential credential,HttpServletRequest request) {
+        String referer = request.getHeader("Referer");
+        credentialService.addCredential(credential);
+        // return "redirect:/credentials";
+        return "redirect:"+ referer;
+    }
+
+    @GetMapping("/deleteCredential")
+    public String deleteCredential(String id) {
+        credentialService.deleteById(id);
+        return "redirect:/credentials";
     }
 }
