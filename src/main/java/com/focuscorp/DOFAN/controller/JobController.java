@@ -36,7 +36,7 @@ public class JobController {
     @RequestMapping(value="/addJob", method = RequestMethod.GET)
     public String addJob(Model model) {
         model.addAttribute("newpipeline", new Pipeline());
-        System.out.println(model.getAttribute("newpipeline"));
+        //System.out.println(model.getAttribute("newpipeline"));
         return "jobs/addJob";
     }
 

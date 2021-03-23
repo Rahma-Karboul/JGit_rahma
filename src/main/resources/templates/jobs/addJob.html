@@ -73,7 +73,7 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <form th:object="${newCredential}" class="form-horizontal form-label-left" novalidate>
+                        <form class="form-horizontal form-label-left" novalidate>
 
 
                         <div class="" role="tabpanel" data-example-id="togglable-tabs">
@@ -369,18 +369,21 @@
                                                                     <label >
                                                                         <input type="checkbox"  class="js-switch"   />
                                                                     </label>
-                                                            </div></div>
+                                                            </div>
+                                                        </div>
 
-                                                        <div class="item form-group">
-                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Repository URL <span class="required">*</span>
-                                                            </label>
-                                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                                            <form th:action="@{/testNexusConnection}" th:object="${newpipeline}" method="POST">
+                                                            <form class="form-horizontal form-label-left" th:action="@{/testNexusConnection}" th:object="${newpipeline}" method="POST">
+                                                                <div class="item form-group">
+                                                                <label class="control-label col-md-3 col-sm-3">Repository URL <span class="required">*</span></label>
+                                                                <div  class="col-md-6 col-sm-6 col-xs-12">
                                                                 <input type="text" id ="artifactUrl" th:field="*{artifactUrl}" required="required" class="form-control col-md-7 col-xs-12" placeholder="Put your repository URL">
-                                                                <!--label class="control-label col-md-3 col-sm-3 col-xs-12">Repository Credentials</label-->
-                                                                <input type="text" id ="artifactUsername" th:field="*{artifactUsername}" required="required" class="form-control col-md-7 col-xs-12" placeholder="Repository username">
-                                                                <input type="text" id ="artifactPassword" th:field="*{artifactPassword}" required="required" class="form-control col-md-7 col-xs-12" placeholder="Repository password">
-                                                                    <!--label class="control-label col-md-3 col-sm-3 col-xs-12">Repository Credentials <span class="required">*</span></label>
+                                                                    <!--input type="text" id ="artifactUsername" th:field="*{artifactUsername}" required="required" class="form-control col-md-7 col-xs-12" placeholder="Repository username">
+                                                                    <input type="text" id ="artifactPassword" th:field="*{artifactPassword}" required="required" class="form-control col-md-7 col-xs-12" placeholder="Repository password"-->
+
+                                                                </div></div>
+
+                                                                <div class="item form-group">
+                                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Repository Credentials <span class="required">*</span></label>
                                                                     <div  class="col-md-6 col-sm-6 col-xs-12">
                                                                         <select required="required" class="form-control col-md-7 col-xs-12" tabindex="-1">
                                                                             <option></option>
@@ -389,13 +392,13 @@
                                                                     </div>
                                                                     <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target=".bs-example-modal-lg">
                                                                         <i class="fa fa-key"> </i> Add credentials
-                                                                    </button-->
+                                                                    </button>
+                                                                </div>
+                                                                    <div  class="col-md-1">
+                                                                        <button id="testCnxBtn" type="submit" class="btn btn-default btn-sm" >Test Connection</button></div>
 
-                                                                <button id="testCnxBtn" type="submit" class="btn btn-default btn-sm" >Test Connection</button>
                                                             </form>
-                                                            <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target=".bs-example-modal-lg">
-                                                                <i class="fa fa-key"> </i> Add credentials
-                                                            </button></div>
+                                                        <div>
                                                         </div>
                                                         </div>
                                                 </div>
