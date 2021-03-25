@@ -1,10 +1,12 @@
 package com.focuscorp.DOFAN.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.Set;
 
 
 @Document(collection = "Pipelines")
@@ -13,21 +15,15 @@ public class Pipeline {
     @Id
     private String id;
 
-    @NotBlank
-    @Size(max = 20)
     private String name;
 
-    @NotBlank
-    @Size(max = 50)
-    private String project;
+    @DBRef
+    private Project project;
 
-    @NotBlank
-    @Size(max = 120)
     private String repositoryUrl;
 
-    @NotBlank
-    @Size(max = 120)
-    private String repositoryCredentials;
+    @DBRef
+    private Credential repositoryCredentials;
 
     private boolean SAPenvironment;
 
@@ -35,36 +31,36 @@ public class Pipeline {
 
     private boolean artifactCnxStatus;
 
-    @Size(max = 120)
     private String artifactUrl;
 
-    @Size(max = 120)
     private String artifactUsername;
 
-    @Size(max = 120)
     private String artifactPassword;
 
     public Pipeline() {
     }
 
 
-    public Pipeline(@NotBlank @Size(max = 20) String name) {
+    public Pipeline(String name) {
         this.name = name;
     }
-
+    public Pipeline(String name, String artifactUrl) {
+        this.name = name;
+        this.artifactUrl = artifactUrl;
+    }
     /*public Pipeline(@NotBlank @Size(max = 20) String name, @NotBlank @Size(max = 120) String project) {
         this.name = name;
         this.project = project;
     }*/
 
-    public Pipeline(@NotBlank @Size(max = 20) String name, @NotBlank @Size(max = 120) String project, @NotBlank @Size(max = 120) String repoUrl, @NotBlank @Size(max = 120) String repoCredential) {
+    public Pipeline(String name, Project project, String repoUrl,Credential repoCredential) {
         this.name = name;
         this.project = project;
         this.repositoryUrl = repoUrl;
         this.repositoryCredentials = repoCredential;
     }
 
-    public Pipeline(@NotBlank @Size(max = 120) String artifactUrl, @NotBlank @Size(max = 120) String artifactUsername, @NotBlank @Size(max = 120) String artifactPassword) {
+    public Pipeline( String artifactUrl, String artifactUsername,String artifactPassword) {
         this.artifactUrl = artifactUrl;
         this.artifactUsername = artifactUsername;
         this.artifactPassword = artifactPassword;
@@ -107,12 +103,12 @@ public class Pipeline {
     }
 
 
-    public String getProject() {
+    public Project getProject() {
         return project;
     }
 
 
-    public void setProject(String project) {
+    public void setProject(Project project) {
         this.project = project;
     }
 
@@ -127,12 +123,12 @@ public class Pipeline {
     }
 
 
-    public String getRepositoryCredentials() {
+    public Credential getRepositoryCredentials() {
         return repositoryCredentials;
     }
 
 
-    public void setRepositoryCredentials(String repositoryCredentials) {
+    public void setRepositoryCredentials(Credential repositoryCredentials) {
         this.repositoryCredentials = repositoryCredentials;
     }
 

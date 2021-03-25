@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.focuscorp.DOFAN.model.Credential;
 import com.focuscorp.DOFAN.service.CredentialService;
+import com.focuscorp.DOFAN.service.PipelineService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.focuscorp.DOFAN.model.Pipeline;
@@ -27,6 +28,9 @@ public class JobController {
     @Autowired
     private CredentialService credentialService;
 
+    @Autowired
+    private PipelineService pipelineService;
+
     @RequestMapping("/jobs")
     public String jobs() {
         return "/jobs/jobs";
@@ -36,7 +40,7 @@ public class JobController {
     @RequestMapping(value="/addJob", method = RequestMethod.GET)
     public String addJob(Model model) {
         model.addAttribute("newpipeline", new Pipeline());
-        //System.out.println(model.getAttribute("newpipeline"));
+        System.out.println(model.getAttribute("newpipeline"));
         return "jobs/addJob";
     }
 
@@ -74,7 +78,8 @@ public class JobController {
         String psd = pipeline.getArtifactPassword();
         System.out.println("Inputs "+url+" "+username+" "+psd);
         System.out.println(model.getAttribute("newpipeline"));
-        String status1 = getStatus(url,username,psd);
+        //pipelineService.addPipeline(pipeline);
+        String status1 = getStatus(url,"mavenuser","m@venp@$$word");
 
         boolean valid;
         if(status1 == "Success"){
@@ -87,6 +92,14 @@ public class JobController {
                 .body(url);
     }
 
+    @RequestMapping(value = "/addPipeline", method = RequestMethod.POST)
+    public String addPipeline(@ModelAttribute("newpipeline") Pipeline pipeline, Model model) {
+
+        System.out.println("hello");
+        System.out.println(model.getAttribute("newpipeline"));
+        pipelineService.addPipeline(pipeline);
+        return "redirect:/builds";
+    }
 
     @RequestMapping("/builds")
     public String builds() {

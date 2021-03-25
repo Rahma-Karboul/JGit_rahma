@@ -73,8 +73,8 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <form class="form-horizontal form-label-left" novalidate>
-
+                        <form th:action="@{/addPipeline}" th:object="${newpipeline}" method="post" class="form-horizontal form-label-left">
+                            <!--form th:action="@{/addCredential}" th:object="${newpipeline}" method="post" class="form-horizontal form-label-left"-->
 
                         <div class="" role="tabpanel" data-example-id="togglable-tabs">
                             <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
@@ -90,17 +90,17 @@
                             <div id="myTabContent" class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
                                     <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Pipeline Name <span class="required">*</span>
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Pipeline Name
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                                                <input id = "pipelineName" th:field="*{name}" type="text" class="form-control col-md-7 col-xs-12">
                                             </div>
                                     </div>
                                     <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Project <span class="required">*</span>
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Project
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select required="required" class="form-control col-md-7 col-xs-12  " tabindex="-1">
+                                            <select class="form-control col-md-7 col-xs-12  " tabindex="-1">
                                                 <option></option>
                                                 <option value="AK">Project 1</option>
                                                 <option value="HI">Project 2</option>
@@ -110,16 +110,16 @@
                                     </div>
 
                                     <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Repository URL <span class="required">*</span>
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Repository URL
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                                            <input type="text" id="last-name" class="form-control col-md-7 col-xs-12">
                                         </div>
                                     </div>
                                     <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Repository Credentials <span class="required">*</span></label>
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Repository Credentials </label>
                                             <div  class="col-md-6 col-sm-6 col-xs-12">
-                                                <select required="required" class="form-control col-md-7 col-xs-12" tabindex="-1">
+                                                <select class="form-control col-md-7 col-xs-12" tabindex="-1">
                                                     <option></option>
                                                     <option value="AK">Alaska</option>
                                                     <option value="HI">Hawaii</option>
@@ -142,10 +142,10 @@
                                             </div>
                                         </div>
                                         <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12"><span class="required"></span>
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                             </label>
                                             <div  class="col-md-6 col-sm-6 col-xs-12">
-                                                <select required="required" class="form-control col-md-7 col-xs-12" tabindex="-1" disabled>
+                                                <select class="form-control col-md-7 col-xs-12" tabindex="-1" disabled>
                                                     <option></option>
                                                     <option value="AK">sap-cloud-sdk</option>
                                                     <option value="HI">sap-ui5-cf</option>
@@ -195,7 +195,7 @@
 
                                     <!--icon  -->
                                     <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Technology <span class="required">*</span>
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Technology
                                         </label>
                                         <div class="col-md-6">
                                             <div class="x_panel" id="emoji-picker">
@@ -235,7 +235,7 @@
                                                     </div>
                                                     <div class="block_content">
                                                         <h2 class="title">     </h2>
-                                                        <input type="checkbox" name="hobbies[]" value="ski" data-parsley-mincheck="2" required class="flat" /> Build tool
+                                                        <input type="checkbox" name="hobbies[]" value="ski" data-parsley-mincheck="2"  class="flat" /> Build tool
                                                         <br /><br />
 
                                                     </div>
@@ -252,7 +252,7 @@
                                                     </div>
                                                     <div class="block_content">
                                                         <h2 class="title">     </h2>
-                                                        <input type="checkbox" name="hobbies[]" value="ski" data-parsley-mincheck="2" required class="flat" /> Backend Integration Tests
+                                                        <input type="checkbox" name="hobbies[]" value="ski" data-parsley-mincheck="2" class="flat" /> Backend Integration Tests
                                                         <br /><br />
 
                                                         <input type="checkbox" name="hobbies[]" value="run" class="flat" /> Backend Unit Tests
@@ -285,7 +285,7 @@
                                                     </div>
                                                     <div class="block_content">
                                                         <h2 class="title">     </h2>
-                                                        <input type="checkbox" name="hobbies[]" value="ski" data-parsley-mincheck="2" required class="flat" /> End to End Tests
+                                                        <input type="checkbox" name="hobbies[]" value="ski" data-parsley-mincheck="2" class="flat" /> End to End Tests
                                                         <br /><br />
 
 
@@ -323,7 +323,7 @@
                                                     </div>
                                                     <div class="block_content">
                                                         <h2 class="title">     </h2>
-                                                        <input type="checkbox" name="hobbies[]" id="hobby1" value="ski" data-parsley-mincheck="2" required class="flat" /> Additional tools
+                                                        <input type="checkbox" name="hobbies[]" id="hobby1" value="ski" data-parsley-mincheck="2" class="flat" /> Additional tools
                                                         <br /><br />
 
                                                         <input type="checkbox" name="hobbies[]" value="run" class="flat" /> Checkmarx scan
@@ -372,34 +372,36 @@
                                                             </div>
                                                         </div>
 
-                                                            <form class="form-horizontal form-label-left" th:action="@{/testNexusConnection}" th:object="${newpipeline}" method="POST">
-                                                                <div class="item form-group">
-                                                                <label class="control-label col-md-3 col-sm-3">Repository URL <span class="required">*</span></label>
-                                                                <div  class="col-md-6 col-sm-6 col-xs-12">
-                                                                <input type="text" id ="artifactUrl" th:field="*{artifactUrl}" required="required" class="form-control col-md-7 col-xs-12" placeholder="Put your repository URL">
-                                                                    <!--input type="text" id ="artifactUsername" th:field="*{artifactUsername}" required="required" class="form-control col-md-7 col-xs-12" placeholder="Repository username">
-                                                                    <input type="text" id ="artifactPassword" th:field="*{artifactPassword}" required="required" class="form-control col-md-7 col-xs-12" placeholder="Repository password"-->
+                                                        <div class="item form-group">
+                                                            <label class="control-label col-md-3 col-sm-3">Repository URL </label>
+                                                            <div  class="col-md-6 col-sm-6 col-xs-12">
+                                                                <input type="text" id ="artifactUrl" th:field="*{artifactUrl}" class="form-control col-md-7 col-xs-12" placeholder="Put your repository URL">
+                                                                    <!--input type="text" id ="artifactUsername" th:field="*{artifactUsername}" class="form-control col-md-7 col-xs-12" placeholder="Repository username">
+                                                                    <input type="text" id ="artifactPassword" th:field="*{artifactPassword}" class="form-control col-md-7 col-xs-12" placeholder="Repository password"-->
 
-                                                                </div></div>
+                                                            </div></div>
 
-                                                                <div class="item form-group">
-                                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Repository Credentials <span class="required">*</span></label>
-                                                                    <div  class="col-md-6 col-sm-6 col-xs-12">
-                                                                        <select required="required" class="form-control col-md-7 col-xs-12" tabindex="-1">
-                                                                            <option></option>
-                                                                            <option value="AK">mavenuser, m@venp@$$word</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target=".bs-example-modal-lg">
+                                                        <div class="item form-group">
+                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Repository Credentials </label>
+                                                            <div  class="col-md-6 col-sm-6 col-xs-12">
+                                                                <!--select class="form-control col-md-7 col-xs-12" tabindex="-1">
+                                                                    <option></option>
+                                                                    <option value="AK">mavenuser, m@venp@$$word</option>
+                                                                </select-->
+                                                                <select th:field="*{artifactUsername}" class="form-control col-md-7 col-xs-12" tabindex="-1">
+                                                                    <option th:text="*{artifactUsername}"
+                                                                            th:value="*{artifactUsername}"></option>
+                                                                </select>
+                                                            </div>
+                                                            <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target=".bs-example-modal-lg">
                                                                         <i class="fa fa-key"> </i> Add credentials
-                                                                    </button>
-                                                                </div>
-                                                                <div class="item form-group">
-                                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12"></label>
-                                                                    <div  class="col-md-6 col-sm-6 col-xs-12">
-                                                                        <button id="testCnxBtn" type="submit" class="btn btn-default btn-sm" >Test Connection</button></div></div>
+                                                            </button>
+                                                        </div>
+                                                        <div class="item form-group">
+                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12"></label>
+                                                            <div  class="col-md-6 col-sm-6 col-xs-12">
+                                                                <button id="testCnxBtn" type="submit" class="btn btn-default btn-sm" >Test Connection</button></div></div>
 
-                                                            </form>
                                                         <div>
                                                         </div>
                                                         </div>
@@ -428,7 +430,7 @@
                                                     </div>
                                                     <div class="block_content">
                                                         <h2 class="title">     </h2>
-                                                        <select required="required" class="form-control " >
+                                                        <select class="form-control " >
                                                             <option value="FC">Focus Cloud</option>
                                                             <option  value="AWS">Amazon Web Services</option>
                                                             <option value="CF">Cloud Foundry</option>
@@ -451,7 +453,7 @@
                            <div  class="col-md-6 col-sm-6 col-xs-12"></div>
 
                     <div  class="col-md-1 col-sm-6 col-xs-12">
-                        <button type="button" class="btn btn-success btn-sm"><a th:href="@{/builds}" class="btn-success">Generate Pipeline</a></button></div>
+                        <button type="submit" class="btn btn-success btn-sm">Generate Pipeline</button></div><!-- th:href="@{/builds}" class="btn-success"-->
                         </form>
                     </div>
                 </div>
@@ -467,30 +469,28 @@
                             <form class="form-horizontal form-label-left" action="#" method="post" th:action="@{/save}">
                                 <div class="modal-body">
                                     <div class="item form-group">
-                                        <label class="col-form-label col-md-3 col-sm-3  label-align" >Provider<span class="required">*</span></label>
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align" >Provider</label>
                                         <div class="col-md-6 col-sm-6">
-                                            <select    class="form-control col-md-7 col-xs-12" tabindex="-1">
+                                            <select class="form-control col-md-7 col-xs-12" tabindex="-1">
 
-                                                <option  th:value="GitHub">GitHub</option>
-                                                <option th:value="GitLab">GitLab</option>
-                                                <option th:value="Autre">Autre</option>
+                                                <option th:value="Nexus">Nexus</option>
                                             </select></div>
                                     </div>
 
                                     <div class="item form-group">
-                                        <label class="col-form-label col-md-3 col-sm-3  label-align" >Username<span class="required">*</span></label>
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align" >Username</label>
                                         <div class="col-md-6 col-sm-6">
-                                            <input class="form-control" required="required" /></div>
+                                            <input id="username" name="username" type="username" class="form-control username" /></div>
                                     </div>
                                     <div class="item form-group">
                                         <label class="col-form-label col-md-3 col-sm-3  label-align" >Email</label>
                                         <div class="col-md-6 col-sm-6">
-                                            <input id="email" class="form-control email" name="email" required="required" type="email" /></div>
+                                            <input id="email" class="form-control email" name="email" type="email" /></div>
                                     </div>
                                     <div class="item form-group">
-                                        <label class="col-form-label col-md-3 col-sm-3  label-align" >Password<span class="required">*</span></label>
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align" >Password</label>
                                         <div class="col-md-6 col-sm-6">
-                                            <input id="password" class="form-control password" name="password" required="required" type="password" /></div>
+                                            <input id="password" class="form-control password" name="password" type="password" /></div>
                                     </div>
 
                                 </div>
@@ -535,7 +535,7 @@
     $('#testCnxBtn').click(function (event) {
         event.preventDefault();
         //noinspection JSJQueryEfficiency
-        $.post("/testNexusConnection", {'artifactUrl': $('#artifactUrl').val(), 'artifactUsername': $('#artifactUsername').val(), 'artifactPassword': $('#artifactPassword').val()}, function () {
+        $.post("/testNexusConnection", {'name': $('#pipelineName').val(), 'artifactUrl': $('#artifactUrl').val(), 'artifactUsername': $('#artifactUsername').val(), 'artifactPassword': $('#artifactPassword').val()}, function () {
             iziToast.show({
                 title: 'Success',
                 message: 'Provided artifact Url is valid',
