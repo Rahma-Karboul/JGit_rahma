@@ -6,6 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.Optional;
 import java.util.Set;
 
 
@@ -25,9 +26,9 @@ public class Pipeline {
     @DBRef
     private Credential repositoryCredentials;
 
-    private boolean SAPenvironment;
+    private boolean isSAPenvironment;
 
-    private boolean externalArtifact;
+    private boolean isExternalArtifact;
 
     private boolean artifactCnxStatus;
 
@@ -36,6 +37,9 @@ public class Pipeline {
     private String artifactUsername;
 
     private String artifactPassword;
+
+    @DBRef
+    private Credential artifactCredentials;
 
     public Pipeline() {
     }
@@ -74,15 +78,16 @@ public class Pipeline {
                 ", project='" + project + '\'' +
                 ", repository url='" + repositoryUrl + '\'' +
                 ", repository Credentials='" + repositoryCredentials + '\'' +
-                ", SAP environment='" + SAPenvironment + '\'' +
-                ", external Artifact='" + externalArtifact + '\'' +
+                ", SAP environment='" + isSAPenvironment + '\'' +
+                ", external Artifact='" + isExternalArtifact + '\'' +
                 ", artifact Url='" + artifactUrl + '\'' +
                 ", artifact Username='" + artifactUsername + '\'' +
                 ", artifact Password='" + artifactPassword + '\'' +
+                ", artifact Credentials='" + artifactCredentials + '\'' +
                 '}';
     }
 
-
+    //////////////////getters & setters ////////////////////////////////////////////
     public String getId() {
         return id;
     }
@@ -134,22 +139,22 @@ public class Pipeline {
 
 
     public boolean isSAPenvironment() {
-        return SAPenvironment;
+        return isSAPenvironment;
     }
 
 
     public void setSAPenvironment(boolean sAPenvironment) {
-        SAPenvironment = sAPenvironment;
+        isSAPenvironment = sAPenvironment;
     }
 
 
     public boolean isExternalArtifact() {
-        return externalArtifact;
+        return isExternalArtifact;
     }
 
 
     public void setExternalArtifact(boolean externalArtifact) {
-        this.externalArtifact = externalArtifact;
+        this.isExternalArtifact = externalArtifact;
     }
 
 
@@ -190,5 +195,12 @@ public class Pipeline {
     public void setArtifactCnxStatus(boolean artifactCnxStatus) {
         this.artifactCnxStatus = artifactCnxStatus;
     }
-    
+
+    public Credential getArtifactCredentials() {
+        return artifactCredentials;
+    }
+
+    public void setArtifactCredentials(Credential artifactCredentials) {
+        this.artifactCredentials = artifactCredentials;
+    }
 }

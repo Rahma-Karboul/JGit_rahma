@@ -7,6 +7,9 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class PipelineService {
     //private static final Logger logger = Logger.getLogger(PipelineService.class);
@@ -26,18 +29,23 @@ public class PipelineService {
         pipelineRepository.save(pipeline);
     }
 
+    public void addPipelines(List<Pipeline> pipelines)
+    {
+        pipelineRepository.saveAll(pipelines);
+    }
 
-    ////////////////////// findAllCredentials Pipeline //////////////////////////////////////////////////
-    public Iterable<Pipeline> findAllCredentials() {
+    ////////////////////// findAll Pipelines //////////////////////////////////////////////////
+    public Iterable<Pipeline> findAllPipelines() {
         //logger.info("PipelineService.findAllCredentials() execution");
         return pipelineRepository.findAll();
     }
 
 
     ////////////////////// findById Pipeline //////////////////////////////////////////////////
-    public  Pipeline findById( String id) {
+    public Optional<Pipeline> findPipelineById(String id) {
         //logger.info("PipelineService.findById() execution");
-        return pipelineRepository.findById(id).get();
+        Optional<Pipeline> pipeline = pipelineRepository.findById(id);
+        return pipeline;
     }
 
 
@@ -49,7 +57,7 @@ public class PipelineService {
 
 
     ////////////////////// Delete Pipeline //////////////////////////////////////////////////
-    public void deleteById(String id)
+    public void deletePipelineById(String id)
     {
         //logger.info("PipelineService.deleteById() execution");
         pipelineRepository.deleteById(id);

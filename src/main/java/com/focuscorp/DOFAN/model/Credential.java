@@ -17,14 +17,6 @@ public class Credential {
 
     private String username;
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     private String password;
 
     public String getCredentialId() {
@@ -59,6 +51,31 @@ public class Credential {
         this.password = password;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public Credential() {
+    }
+
+
+    public Credential(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "Credential{" +
+                "credentialId='" + credentialId + '\'' +
+                ", provider='" + provider + '\'' +
+                ", email='" + email + '\'' +
+                ", username='" + username + '\'' +
+                ", password=" + password +
+                '}';
     }
 }

@@ -1,12 +1,15 @@
 package com.focuscorp.DOFAN.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import com.focuscorp.DOFAN.model.Credential;
+import com.focuscorp.DOFAN.model.Project;
 import com.focuscorp.DOFAN.service.CredentialService;
 import com.focuscorp.DOFAN.service.PipelineService;
+import com.focuscorp.DOFAN.service.ProjectServiceImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.focuscorp.DOFAN.model.Pipeline;
@@ -21,6 +24,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Base64;
+import java.util.Optional;
 
 @Controller
 public class JobController {
@@ -30,6 +34,9 @@ public class JobController {
 
     @Autowired
     private PipelineService pipelineService;
+
+    @Autowired
+    private ProjectServiceImplementation projectServiceImplementation;
 
     @RequestMapping("/jobs")
     public String jobs() {
@@ -41,6 +48,26 @@ public class JobController {
     public String addJob(Model model) {
         model.addAttribute("newpipeline", new Pipeline());
         System.out.println(model.getAttribute("newpipeline"));
+
+        //get list of all project
+        List<Project> listProjects = projectServiceImplementation.findAllProjects( );
+
+        //get list of all credentials
+        List<Credential> listCredentials = (List<Credential>)credentialService.findAllCredentials( );
+        List<Credential> ListNexusCredentials = new ArrayList<>();
+
+        for(Credential credential: listCredentials){
+            if(credential.getProvider() != null && (credential.getProvider().equals("nexus") || credential.getProvider().equals("Nexus") )){
+                ListNexusCredentials.add(credential);}
+
+        }
+        //System.out.println(listProjects);
+        //System.out.println(listCredentials);
+        //System.out.println(ListNexusCredentials);
+
+        model.addAttribute("listProjects",listProjects);
+        model.addAttribute("listCredentials",listCredentials);
+        model.addAttribute("ListNexusCredentials",ListNexusCredentials);
         return "jobs/addJob";
     }
 
@@ -74,12 +101,14 @@ public class JobController {
     @RequestMapping(value="/testNexusConnection", method = RequestMethod.POST)
     public ResponseEntity<String> validateEmail(@ModelAttribute("newpipeline")Pipeline pipeline, Model model) throws IOException{
         String url = pipeline.getArtifactUrl();
-        String username = pipeline.getArtifactUsername();
-        String psd = pipeline.getArtifactPassword();
+        Credential c = pipeline.getArtifactCredentials();
+        String username = c.getUsername();
+        String psd = c.getPassword();
+
         System.out.println("Inputs "+url+" "+username+" "+psd);
         System.out.println(model.getAttribute("newpipeline"));
         //pipelineService.addPipeline(pipeline);
-        String status1 = getStatus(url,"mavenuser","m@venp@$$word");
+        String status1 = getStatus(url,username,psd);
 
         boolean valid;
         if(status1 == "Success"){
@@ -95,8 +124,13 @@ public class JobController {
     @RequestMapping(value = "/addPipeline", method = RequestMethod.POST)
     public String addPipeline(@ModelAttribute("newpipeline") Pipeline pipeline, Model model) {
 
-        System.out.println("hello");
         System.out.println(model.getAttribute("newpipeline"));
+        //model.addAttribute("project", new Project());
+        //Optional<Project> selectedProject = projectServiceImplementation.findProjectById(pipeline.getProject().getProjectName());
+        //System.out.print(selectedProject);
+        //pipeline.setProject(selectedProject);
+        //findprojectbyId(nameProject)
+        System.out.println(pipeline.getProject()+pipeline.getName());
         pipelineService.addPipeline(pipeline);
         return "redirect:/builds";
     }

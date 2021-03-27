@@ -100,12 +100,15 @@
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Project
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select class="form-control col-md-7 col-xs-12  " tabindex="-1">
-                                                <option></option>
-                                                <option value="AK">Project 1</option>
-                                                <option value="HI">Project 2</option>
+                                            <select th:field="*{project.projectID}" class="form-control col-md-7 col-xs-12  " tabindex="-1">
+                                                <option value=""></option>
+                                                <option th:each="project : ${listProjects}"
+                                                        th:text="${project.projectName}"
+                                                        th:value="${project.projectID}">
+                                                </option>
 
                                             </select>
+
                                         </div>
                                     </div>
 
@@ -119,10 +122,12 @@
                                     <div class="item form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Repository Credentials </label>
                                             <div  class="col-md-6 col-sm-6 col-xs-12">
-                                                <select class="form-control col-md-7 col-xs-12" tabindex="-1">
-                                                    <option></option>
-                                                    <option value="AK">Alaska</option>
-                                                    <option value="HI">Hawaii</option>
+                                                <select th:field="*{repositoryCredentials.credentialId}" class="form-control col-md-7 col-xs-12  " tabindex="-1">
+                                                    <option value=""></option>
+                                                    <option th:each="credential : ${listCredentials}"
+                                                            th:text="${credential.username}"
+                                                            th:value="${credential.credentialId}">
+                                                    </option>
 
                                                 </select>
                                             </div>
@@ -384,13 +389,28 @@
                                                         <div class="item form-group">
                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Repository Credentials </label>
                                                             <div  class="col-md-6 col-sm-6 col-xs-12">
-                                                                <!--select class="form-control col-md-7 col-xs-12" tabindex="-1">
-                                                                    <option></option>
-                                                                    <option value="AK">mavenuser, m@venp@$$word</option>
+                                                                <!--select id="artifactUsername" th:field="*{artifactUsername}" class="form-control col-md-7 col-xs-12" tabindex="-1">
+                                                                    <option value=""></option>
+                                                                    <option th:each="credential : ${listCredentials}"
+                                                                            th:text="${credential.username}"
+                                                                            th:value="${credential.username}">
+                                                                    </option>
                                                                 </select-->
-                                                                <select th:field="*{artifactUsername}" class="form-control col-md-7 col-xs-12" tabindex="-1">
-                                                                    <option th:text="*{artifactUsername}"
-                                                                            th:value="*{artifactUsername}"></option>
+
+                                                                <!--select id="artifactPassword" th:field="*{artifactPassword}" class="form-control col-md-7 col-xs-12" tabindex="-1">
+                                                                    <option value=""></option>
+                                                                    <option th:each="credential : ${listCredentials}"
+                                                                            th:text="${credential.password}"
+                                                                            th:value="${credential.password}">
+                                                                    </option>
+                                                                </select-->
+                                                                <select id="artifactCredentials" th:field="*{artifactCredentials.credentialId}" class="form-control col-md-7 col-xs-12  " tabindex="-1">
+                                                                    <option value=""></option>
+                                                                    <option th:each="credential : ${ListNexusCredentials}"
+                                                                            th:text="${credential.username}"
+                                                                            th:value="${credential.credentialId}">
+                                                                    </option>
+
                                                                 </select>
                                                             </div>
                                                             <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target=".bs-example-modal-lg">
@@ -471,10 +491,15 @@
                                     <div class="item form-group">
                                         <label class="col-form-label col-md-3 col-sm-3  label-align" >Provider</label>
                                         <div class="col-md-6 col-sm-6">
-                                            <select class="form-control col-md-7 col-xs-12" tabindex="-1">
+                                            <select id="provider" name="provider" type="provider" class="form-control col-md-7 col-xs-12  " tabindex="-1">
+                                                <option value="Nexus">Nexus</option>
+                                                <!--option th:each="credential : ${listCredentials}"
+                                                        th:text="${credential.provider}"
+                                                        th:value="${credential.provider}">
+                                                </option-->
 
-                                                <option th:value="Nexus">Nexus</option>
-                                            </select></div>
+                                            </select>
+                                        </div>
                                     </div>
 
                                     <div class="item form-group">
@@ -535,7 +560,7 @@
     $('#testCnxBtn').click(function (event) {
         event.preventDefault();
         //noinspection JSJQueryEfficiency
-        $.post("/testNexusConnection", {'name': $('#pipelineName').val(), 'artifactUrl': $('#artifactUrl').val(), 'artifactUsername': $('#artifactUsername').val(), 'artifactPassword': $('#artifactPassword').val()}, function () {
+        $.post("/testNexusConnection", {'artifactCredentials': $('#artifactCredentials').val(),'artifactUrl': $('#artifactUrl').val()}, function () {
             iziToast.show({
                 title: 'Success',
                 message: 'Provided artifact Url is valid',

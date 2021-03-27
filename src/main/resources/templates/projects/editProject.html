@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<!-- :: is a header fragment selector -->
+<div th:replace="common/includes :: common-header" />
+
+<body>
+<div th:replace="common/includes :: navigation-leftside" />
+
+<div  tabindex="-1" role="dialog" aria-hidden="true">
+    <div >
+        <div >
+            <div >
+                <form  class="form-horizontal form-label-left" th:object="${project}" th:action="@{/edit}" method="post">
+
+                    <span class="section">Edit Project Infos</span>
+                    <div class="field item form-group">
+                        <div class="col-md-6 col-sm-6">
+                            <input id="projectID" type="hidden" class="form-control" name="projectID" th:field="*{projectID}"/>
+                        </div>
+                    </div>
+                    <div class="field item form-group">
+                        <label class="col-form-label col-md-3 col-sm-3  label-align">Name<span class="required">*</span></label>
+                        <div class="col-md-6 col-sm-6">
+                            <input th:field="*{projectName}" class="form-control" name="projectName" required="required" />
+                        </div>
+                    </div>
+                    <div class="field item form-group">
+                        <label class="col-form-label col-md-3 col-sm-3  label-align">Description<span class="required">*</span></label>
+                        <div class="col-md-6 col-sm-6">
+                            <textarea th:field="*{projectDescription}" class="form-control" required="required" name="projectDescription"/>
+                        </div>
+                    </div>
+
+                    <div class="field item form-group">
+                        <div class=" col-md-6 col-sm-6">
+                            <input type="hidden" th:field="*{pipelines}" class="form-control" name="pipelinePerProjectCount" />
+                        </div>
+                    </div>
+
+                    <div class="ln_solid">
+                        <div class="form-group">
+                            <div class="col-md-9 offset-md-3">
+
+                                <a class="btn btn-danger" th:href="@{/displayProjects}">Close</a>
+                                <button type="submit" class="btn btn-success">Save Changes</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<!-- :: is a footer fragment selector -->
+<div th:replace="common/includes :: body-bottom-scripts" />
+
+
+
+</body>
+</html>
