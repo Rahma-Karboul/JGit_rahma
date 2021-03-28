@@ -99,7 +99,7 @@ public class JobController {
     }
 
     @RequestMapping(value="/testNexusConnection", method = RequestMethod.POST)
-    public ResponseEntity<String> validateEmail(@ModelAttribute("newpipeline")Pipeline pipeline, Model model) throws IOException{
+    public ResponseEntity<String> testNexusConnection(@ModelAttribute("newpipeline")Pipeline pipeline, Model model) throws IOException{
         String url = pipeline.getArtifactUrl();
         Credential c = pipeline.getArtifactCredentials();
         String username = c.getUsername();

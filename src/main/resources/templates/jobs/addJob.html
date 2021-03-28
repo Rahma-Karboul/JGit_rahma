@@ -74,7 +74,6 @@
                     </div>
                     <div class="x_content">
                         <form th:action="@{/addPipeline}" th:object="${newpipeline}" method="post" class="form-horizontal form-label-left">
-                            <!--form th:action="@{/addCredential}" th:object="${newpipeline}" method="post" class="form-horizontal form-label-left"-->
 
                         <div class="" role="tabpanel" data-example-id="togglable-tabs">
                             <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
@@ -140,7 +139,7 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <div class="">
                                                     <label >
-                                                        <input type="checkbox"  class="js-switch"   />
+                                                        <input id="isSAPenvironment" type="checkbox"  class="js-switch"   />
                                                     </label>
                                                 </div>
 
@@ -150,7 +149,8 @@
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                             </label>
                                             <div  class="col-md-6 col-sm-6 col-xs-12">
-                                                <select class="form-control col-md-7 col-xs-12" tabindex="-1" disabled>
+                                                <!--select class="form-control col-md-7 col-xs-12" tabindex="-1" disabled-->
+                                                <select id="SAPenvironment" class="form-control col-md-7 col-xs-12" tabindex="-1" disabled>
                                                     <option></option>
                                                     <option value="AK">sap-cloud-sdk</option>
                                                     <option value="HI">sap-ui5-cf</option>
@@ -372,7 +372,7 @@
                                                             <label class="control-label col-md-3 ">External Artifact Delivery</label>
                                                             <div class="col-md-1">
                                                                     <label >
-                                                                        <input type="checkbox"  class="js-switch"   />
+                                                                        <input id="isExternalArtifact" type="checkbox"  class="js-switch"   />
                                                                     </label>
                                                             </div>
                                                         </div>
@@ -380,7 +380,7 @@
                                                         <div class="item form-group">
                                                             <label class="control-label col-md-3 col-sm-3">Repository URL </label>
                                                             <div  class="col-md-6 col-sm-6 col-xs-12">
-                                                                <input type="text" id ="artifactUrl" th:field="*{artifactUrl}" class="form-control col-md-7 col-xs-12" placeholder="Put your repository URL">
+                                                                <input type="text" id ="artifactUrl" th:field="*{artifactUrl}" class="form-control col-md-7 col-xs-12" placeholder="Put your repository URL" disabled>
                                                                     <!--input type="text" id ="artifactUsername" th:field="*{artifactUsername}" class="form-control col-md-7 col-xs-12" placeholder="Repository username">
                                                                     <input type="text" id ="artifactPassword" th:field="*{artifactPassword}" class="form-control col-md-7 col-xs-12" placeholder="Repository password"-->
 
@@ -404,7 +404,7 @@
                                                                             th:value="${credential.password}">
                                                                     </option>
                                                                 </select-->
-                                                                <select id="artifactCredentials" th:field="*{artifactCredentials.credentialId}" class="form-control col-md-7 col-xs-12  " tabindex="-1">
+                                                                <select id="artifactCredentials" th:field="*{artifactCredentials.credentialId}" class="form-control col-md-7 col-xs-12  " tabindex="-1" disabled>
                                                                     <option value=""></option>
                                                                     <option th:each="credential : ${ListNexusCredentials}"
                                                                             th:text="${credential.username}"
@@ -578,6 +578,24 @@
             });
         });
     });
+</script>
+<script>
+    $('#isSAPenvironment').change(function(){
+        if($(this).is(':checked')){
+            $('#SAPenvironment').prop('disabled',false)
+        }else{
+            $('#SAPenvironment').prop('disabled',true)
+        }
+    })
+    $('#isExternalArtifact').change(function(){
+        if($(this).is(':checked')){
+            $('#artifactUrl').prop('disabled',false);
+            $('#artifactCredentials').prop('disabled',false);
+        }else{
+            $('#artifactUrl').prop('disabled',true);
+            $('#artifactCredentials').prop('disabled',true);
+        }
+    })
 </script>
 </body>
 </html>
