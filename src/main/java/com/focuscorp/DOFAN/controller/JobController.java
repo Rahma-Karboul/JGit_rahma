@@ -39,15 +39,18 @@ public class JobController {
     private ProjectServiceImplementation projectServiceImplementation;
 
     @RequestMapping("/jobs")
-    public String jobs() {
-        return "/jobs/jobs";
+    public String jobs() { return "/jobs/jobs"; }
+
+    @RequestMapping("/builds")
+    public String builds() {
+        return "/jobs/builds";
     }
 
 
+    ////////////////////////////////////// Get AddJob page  ////////////////////////////////////////////
     @RequestMapping(value="/addJob", method = RequestMethod.GET)
     public String addJob(Model model) {
         model.addAttribute("newpipeline", new Pipeline());
-        System.out.println(model.getAttribute("newpipeline"));
 
         //get list of all project
         List<Project> listProjects = projectServiceImplementation.findAllProjects( );
@@ -68,10 +71,11 @@ public class JobController {
         model.addAttribute("listProjects",listProjects);
         model.addAttribute("listCredentials",listCredentials);
         model.addAttribute("ListNexusCredentials",ListNexusCredentials);
+
         return "jobs/addJob";
     }
 
-
+    ////////////////////////////////////// Get Nexus Status method  ////////////////////////////////////////////
     public static String getStatus(String url, String username, String psd) throws IOException {
 
         String result = "";
@@ -98,6 +102,7 @@ public class JobController {
         return result;
     }
 
+    ////////////////////////////////////// Test Nexus Connexion  ////////////////////////////////////////////
     @RequestMapping(value="/testNexusConnection", method = RequestMethod.POST)
     public ResponseEntity<String> testNexusConnection(@ModelAttribute("newpipeline")Pipeline pipeline, Model model) throws IOException{
         String url = pipeline.getArtifactUrl();
@@ -106,7 +111,6 @@ public class JobController {
         String psd = c.getPassword();
 
         System.out.println("Inputs "+url+" "+username+" "+psd);
-        System.out.println(model.getAttribute("newpipeline"));
         //pipelineService.addPipeline(pipeline);
         String status1 = getStatus(url,username,psd);
 
@@ -121,25 +125,19 @@ public class JobController {
                 .body(url);
     }
 
+    ////////////////////////////////////// Create/Add Pipeline  ////////////////////////////////////////////
     @RequestMapping(value = "/addPipeline", method = RequestMethod.POST)
     public String addPipeline(@ModelAttribute("newpipeline") Pipeline pipeline, Model model) {
 
-        System.out.println(model.getAttribute("newpipeline"));
-        //model.addAttribute("project", new Project());
-        //Optional<Project> selectedProject = projectServiceImplementation.findProjectById(pipeline.getProject().getProjectName());
-        //System.out.print(selectedProject);
-        //pipeline.setProject(selectedProject);
-        //findprojectbyId(nameProject)
-        System.out.println(pipeline.getProject()+pipeline.getName());
+        //System.out.println(model.getAttribute("newpipeline"));
+        //System.out.println(pipeline.getProject());
+        //System.out.println(pipeline.getName());
+
         pipelineService.addPipeline(pipeline);
         return "redirect:/builds";
     }
 
-    @RequestMapping("/builds")
-    public String builds() {
-        return "/jobs/builds";
-    }
-
+    ////////////////////////////////////// Display list of Credentials  ////////////////////////////////////////////
     @RequestMapping(value ="/credentials", method = RequestMethod.GET)
     public String credentials(Model model) {
         model.addAttribute("newCredential", new Credential());
@@ -150,6 +148,7 @@ public class JobController {
         return "/jobs/credentials";
     }
 
+    ////////////////////////////////////// Create/Add new credential (first Version) ////////////////////////////////////////////
     @RequestMapping(value = "/addCredential", method = RequestMethod.POST)
     public String addCredential(@ModelAttribute("newCredential") Credential credential, Model model,HttpServletRequest request) {
         String referer = request.getHeader("Referer");
@@ -166,6 +165,7 @@ public class JobController {
         return credentialService.findById(id);
     }
 
+    ////////////////////////////////////// Create/Add new credential (second Version) ////////////////////////////////////////////
     @PostMapping("/save")
     public String save(Credential credential,HttpServletRequest request) {
         String referer = request.getHeader("Referer");
@@ -174,6 +174,7 @@ public class JobController {
         return "redirect:"+ referer;
     }
 
+    ////////////////////////////////////// Delete credential  ////////////////////////////////////////////
     @GetMapping("/deleteCredential")
     public String deleteCredential(String id) {
         credentialService.deleteById(id);

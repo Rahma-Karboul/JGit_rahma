@@ -89,17 +89,17 @@
                             <div id="myTabContent" class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
                                     <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Pipeline Name
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Pipeline Name<span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id = "pipelineName" th:field="*{name}" type="text" class="form-control col-md-7 col-xs-12">
+                                                <input id = "pipelineName" th:field="*{name}" type="text" required="required" class="form-control col-md-7 col-xs-12">
                                             </div>
                                     </div>
                                     <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Project
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Project<span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select th:field="*{project.projectID}" class="form-control col-md-7 col-xs-12  " tabindex="-1">
+                                            <select th:field="*{project.projectID}" class="form-control col-md-7 col-xs-12 " required="required" tabindex="-1">
                                                 <option value=""></option>
                                                 <option th:each="project : ${listProjects}"
                                                         th:text="${project.projectName}"
@@ -112,16 +112,16 @@
                                     </div>
 
                                     <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Repository URL
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Repository URL<span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" id="last-name" class="form-control col-md-7 col-xs-12">
+                                            <input th:field="*{repositoryUrl}" type="text" id="last-name" class="form-control col-md-7 col-xs-12" required="required">
                                         </div>
                                     </div>
                                     <div class="item form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Repository Credentials </label>
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Repository Credentials<span class="required">*</span> </label>
                                             <div  class="col-md-6 col-sm-6 col-xs-12">
-                                                <select th:field="*{repositoryCredentials.credentialId}" class="form-control col-md-7 col-xs-12  " tabindex="-1">
+                                                <select th:field="*{repositoryCredentials.credentialId}" class="form-control col-md-7 col-xs-12 " required="required" tabindex="-1">
                                                     <option value=""></option>
                                                     <option th:each="credential : ${listCredentials}"
                                                             th:text="${credential.username}"
@@ -139,7 +139,7 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <div class="">
                                                     <label >
-                                                        <input id="isSAPenvironment" type="checkbox"  class="js-switch"   />
+                                                        <input id="isSAPenvironment" type="checkbox"  class="js-switch" th:field="*{SAPenvironment}"  />
                                                     </label>
                                                 </div>
 
@@ -150,11 +150,11 @@
                                             </label>
                                             <div  class="col-md-6 col-sm-6 col-xs-12">
                                                 <!--select class="form-control col-md-7 col-xs-12" tabindex="-1" disabled-->
-                                                <select id="SAPenvironment" class="form-control col-md-7 col-xs-12" tabindex="-1" disabled>
-                                                    <option></option>
-                                                    <option value="AK">sap-cloud-sdk</option>
-                                                    <option value="HI">sap-ui5-cf</option>
-                                                    <option value="HI">sap-ui5-neo</option>
+                                                <select th:field="*{SAPplateform}" id="SAPenvironment" class="form-control col-md-7 col-xs-12" tabindex="-1" disabled required="required">
+                                                    <option value=""></option>
+                                                    <option value="sap-cloud-sdk">sap-cloud-sdk</option>
+                                                    <option value="sap-ui5-cf">sap-ui5-cf</option>
+                                                    <option value="sap-ui5-neo">sap-ui5-neo</option>
 
                                                 </select>
                                             </div>
@@ -240,14 +240,12 @@
                                                     </div>
                                                     <div class="block_content">
                                                         <h2 class="title">     </h2>
-                                                        <input type="checkbox" name="hobbies[]" value="ski" data-parsley-mincheck="2"  class="flat" /> Build tool
+                                                        <input type="checkbox" th:field="*{buildTool}" class="flat"/> Build tool
                                                         <br /><br />
-
                                                     </div>
                                                 </div>
                                             </li>
                                             <li>
-
 
                                                 <div class="block_x">
                                                     <div class="tags_x">
@@ -257,25 +255,25 @@
                                                     </div>
                                                     <div class="block_content">
                                                         <h2 class="title">     </h2>
-                                                        <input type="checkbox" name="hobbies[]" value="ski" data-parsley-mincheck="2" class="flat" /> Backend Integration Tests
+                                                        <input type="checkbox" name="LocalTests[]" th:field="*{backendIntegrationTests}" class="flat" /> Backend Integration Tests
                                                         <br /><br />
 
-                                                        <input type="checkbox" name="hobbies[]" value="run" class="flat" /> Backend Unit Tests
+                                                        <input type="checkbox" name="LocalTests[]" th:field="*{backendUnitTests}" class="flat" /> Backend Unit Tests
                                                         <br /><br />
 
-                                                        <input type="checkbox" name="hobbies[]" value="eat" class="flat" /> Frontend Integration Tests
+                                                        <input type="checkbox" name="LocalTests[]" th:field="*{frontendIntegrationTests}" class="flat" /> Frontend Integration Tests
                                                         <br /><br />
 
-                                                        <input type="checkbox" name="hobbies[]" value="run" class="flat" /> Frontend Unit Tests
+                                                        <input type="checkbox" name="LocalTests[]" th:field="*{frontendUnitTests}" class="flat" /> Frontend Unit Tests
                                                         <br /><br />
 
-                                                        <input type="checkbox" name="hobbies[]" value="eat" class="flat" /> Lint
+                                                        <input type="checkbox" name="LocalTests[]" th:field="*{lint}" class="flat" /> Lint
                                                         <br /><br />
 
-                                                        <input type="checkbox" name="hobbies[]" value="sleep" class="flat" /> NPM dependency Audit
+                                                        <input type="checkbox" name="LocalTests[]" th:field="*{NPMdependencyAudit}" class="flat" /> NPM dependency Audit
                                                         <br /><br />
 
-                                                        <input type="checkbox" name="hobbies[]" value="eat" class="flat" /> Static Code Check
+                                                        <input type="checkbox" name="LocalTests[]" th:field="*{staticCodeCheck}" class="flat" /> Static Code Check
                                                         <br />
                                                     </div>
                                                 </div>
@@ -290,18 +288,15 @@
                                                     </div>
                                                     <div class="block_content">
                                                         <h2 class="title">     </h2>
-                                                        <input type="checkbox" name="hobbies[]" value="ski" data-parsley-mincheck="2" class="flat" /> End to End Tests
+                                                        <input type="checkbox" name="RemoteTests[]" th:field="*{endToEndTests}" class="flat" /> End to End Tests
                                                         <br /><br />
 
-
-
-                                                        <input type="checkbox" name="hobbies[]" value="eat" class="flat" /> Performance tests
+                                                        <input type="checkbox" name="RemoteTests[]" th:field="*{performanceTests}" class="flat" /> Performance tests
                                                         <br />
                                                     </div>
                                                 </div>
                                             </li>
                                             <li>
-
 
                                                 <div class="block_x">
                                                     <div class="tags_x">
@@ -312,7 +307,7 @@
                                                     <div class="block_content">
                                                         <h2 class="title">     </h2>
 
-                                                        <input type="checkbox" name="hobbies[]" value="eat" class="flat" /> Code coverage
+                                                        <input type="checkbox" name="QualityChecks" th:field="*{codeCoverage}" class="flat" /> Code coverage
                                                         <br />
                                                     </div>
                                                 </div>
@@ -328,21 +323,19 @@
                                                     </div>
                                                     <div class="block_content">
                                                         <h2 class="title">     </h2>
-                                                        <input type="checkbox" name="hobbies[]" id="hobby1" value="ski" data-parsley-mincheck="2" class="flat" /> Additional tools
+                                                        <input type="checkbox" name="ThirdPartyChecks[]" th:field="*{additionalTools}" class="flat" /> Additional tools
                                                         <br /><br />
 
-                                                        <input type="checkbox" name="hobbies[]" value="run" class="flat" /> Checkmarx scan
+                                                        <input type="checkbox" name="ThirdPartyChecks[]" th:field="*{checkmarxScan}" class="flat" /> Checkmarx scan
                                                         <br /><br />
 
-                                                        <input type="checkbox" name="hobbies[]" value="eat" class="flat" /> Fortify scan
+                                                        <input type="checkbox" name="ThirdPartyChecks[]" th:field="*{fortifyScan}" class="flat" /> Fortify scan
                                                         <br /><br />
 
-                                                        <input type="checkbox" name="hobbies[]" value="run" class="flat" /> SourceClear scan
+                                                        <input type="checkbox" name="ThirdPartyChecks[]" th:field="*{sourceClearScan}" class="flat" /> SourceClear scan
                                                         <br /><br />
 
-
-
-                                                        <input type="checkbox" name="hobbies[]" value="eat" class="flat" /> White source scan
+                                                        <input type="checkbox" name="ThirdPartyChecks[]" th:field="*{whiteSourceScan}" class="flat" /> White source scan
                                                         <br />
                                                     </div>
                                                 </div>
@@ -372,7 +365,7 @@
                                                             <label class="control-label col-md-3 ">External Artifact Delivery</label>
                                                             <div class="col-md-1">
                                                                     <label >
-                                                                        <input id="isExternalArtifact" type="checkbox"  class="js-switch"   />
+                                                                        <input id="isExternalArtifact" type="checkbox"  class="js-switch" th:field="*{externalArtifact}"  />
                                                                     </label>
                                                             </div>
                                                         </div>
@@ -450,11 +443,11 @@
                                                     </div>
                                                     <div class="block_content">
                                                         <h2 class="title">     </h2>
-                                                        <select class="form-control " >
-                                                            <option value="FC">Focus Cloud</option>
-                                                            <option  value="AWS">Amazon Web Services</option>
-                                                            <option value="CF">Cloud Foundry</option>
-                                                            <option value="oth">Other...</option>
+                                                        <select class="form-control " th:field="*{deploymentServer}" required="required">
+                                                            <option value="Focus Cloud">Focus Cloud</option>
+                                                            <option  value="Amazon Web Services">Amazon Web Services</option>
+                                                            <option value="Cloud Foundry">Cloud Foundry</option>
+                                                            <option value="Other">Other...</option>
                                                         </select>
                                                     </div>
                                                 </div>
