@@ -1,5 +1,6 @@
 package com.focuscorp.DOFAN;
 
+import com.focuscorp.DOFAN.model.Pipeline;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -73,4 +74,19 @@ public class JobControllerTest {
     public void EditCredential_ShouldEditCredential() throws Exception   {
 
     }
+
+    @Test
+    public void AddPipeline_ShouldAddPipeline() throws Exception   {
+
+        Pipeline oPipeline = new Pipeline();
+        mockMvc.perform(MockMvcRequestBuilders.post("/addPipeline")
+                .flashAttr("newPipeline", oPipeline)).andDo(print())
+                //  .param("username", sUsername)
+                //  .param("email", sEmail)
+                //  .param("password", sPassword))
+
+                //.andExpect(MockMvcResultMatchers.redirectedUrl("/jobs"))
+                . andExpect(status().isFound());
+    }
+
 }

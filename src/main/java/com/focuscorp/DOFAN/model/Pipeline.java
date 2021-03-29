@@ -23,6 +23,14 @@ public class Pipeline {
     private Credential repositoryCredentials;
     private boolean isSAPenvironment;
     private String SAPplateform;
+    ////////////////////////// Programming languages attributes ///////////
+    private boolean isJava;
+    private boolean isAndroid;
+    private boolean isPhp;
+    private boolean isCplus;
+    ////////////////////////// Frameworks attributes ///////////
+    private boolean isSpring;
+    private boolean isNode;
     ////////////////////////// Build attributes ///////////
     private boolean isBuildTool;
     ////////////////////////// LocalTests attributes ///////
@@ -244,4 +252,22 @@ public class Pipeline {
 
     public String getDeploymentServer() { return deploymentServer; }
     public void setDeploymentServer(String deploymentServer) { this.deploymentServer = deploymentServer; }
+
+    public boolean isJava() { return isJava; }
+    public void setJava(boolean java) { isJava = java; }
+
+    public boolean isAndroid() { return isAndroid; }
+    public void setAndroid(boolean android) { isAndroid = android; }
+
+    public boolean isPhp() { return isPhp; }
+    public void setPhp(boolean php) { isPhp = php; }
+
+    public boolean isCplus() { return isCplus; }
+    public void setCplus(boolean cplus) { isCplus = cplus; }
+
+    public boolean isSpring() { return isSpring; }
+    public void setSpring(boolean spring) { isSpring = spring; }
+
+    public boolean isNode() { return isNode; }
+    public void setNode(boolean node) { isNode = node; }
 }
