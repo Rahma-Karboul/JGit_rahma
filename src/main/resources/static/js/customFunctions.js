@@ -145,3 +145,22 @@ $('.intercom-composer-popover-input').on('input', function() {
         $(".intercom-emoji-picker-emoji").show();
     }
 });
+
+function checkConnx() {
+      var sURLText = $("#repo_url").val();
+   // alert(validURL(sURLText));
+
+   $.post("/checkSCMConnection",{'repositoryUrl': sURLText } ,function () {
+             }).fail(function () {
+                iziToast.show({
+                title: 'Fail',
+                message: 'This is a private repository! Dofan user need to be invited. Check documentation for more details https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/inviting-collaborators-to-a-personal-repository',
+                position: 'topRight',
+                color: 'red'
+            });
+        });
+}; 
+
+$( "#repo_url").on("focusout",checkConnx);
+$('.nav-tabs li').on("click",checkConnx);
+  

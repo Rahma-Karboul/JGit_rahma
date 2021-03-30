@@ -10,6 +10,10 @@ import com.focuscorp.DOFAN.model.Project;
 import com.focuscorp.DOFAN.service.CredentialService;
 import com.focuscorp.DOFAN.service.PipelineService;
 import com.focuscorp.DOFAN.service.ProjectServiceImplementation;
+
+import org.kohsuke.github.GHRepository;
+import org.kohsuke.github.GitHub;
+import org.kohsuke.github.GitHubBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.focuscorp.DOFAN.model.Pipeline;
@@ -180,4 +184,49 @@ public class JobController {
         credentialService.deleteById(id);
         return "redirect:/credentials";
     }
+
+
+
+    /////////Test SCM conx
+    @RequestMapping(value="/checkSCMConnection", method = RequestMethod.POST)
+    public ResponseEntity<String> check(@ModelAttribute("checkpipeline")Pipeline pipeline) throws IOException  {
+        GHRepository repo;
+        boolean isReachable = true;
+        String url1 = "rteeeeye";
+               
+        //connect with DOFAN GENERAL USER
+        GitHub github = new GitHubBuilder().withOAuthToken("036d4a6d5042ceec139ed466eef369324b81567f").build();
+
+        //get from input
+        String urlrepo = pipeline.getRepositoryUrl();
+        String urlRepoStr = urlrepo.substring(19);
+     //   String sRepoUrl = "TesnimK/newfortest" ;//martinwojtus/tutorials" //;
+       
+        try{
+             repo = github.getRepository( urlRepoStr );
+           //  isReachable = true;
+       // GHRepository repo1 = github.getRepository( "TesnimK/anotherTestUser" );
+       } catch (IOException e1) {
+                System.out.println("Repository content can't be reached!");
+                if(github.getMyInvitations().size()>0)
+                            { github.getMyInvitations().get(0).accept();
+                               repo = github.getRepository( urlRepoStr );
+                                //isReachable = true ;
+                               // return  ResponseEntity.ok(url1); 
+                            }
+                else
+                {
+                    //private with no invitation OR wrong repo name
+                  //  return   ResponseEntity.badRequest().body(url1);
+                  isReachable = false ;
+                }
+                
+       
+      }
+       /// isPublic =(!repo.isPrivate());
+       
+        
+        return isReachable ? ResponseEntity.ok(url1 ) : ResponseEntity.badRequest().body(url1);
+    }
+
 }
