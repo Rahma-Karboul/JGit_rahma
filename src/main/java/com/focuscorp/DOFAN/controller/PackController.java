@@ -61,6 +61,6 @@ public class PackController {
         model.addAttribute("entrepPack", new Pack());
         model.addAttribute("clientEntrep", new User());
 
-        return "/packs";
+        return "packs/packs";
     }
 }

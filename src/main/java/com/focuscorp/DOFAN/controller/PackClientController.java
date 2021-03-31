@@ -96,7 +96,7 @@ public class PackClientController {
         mailMessage.setText(emailText);
 
         emailSenderService.sendEmail(mailMessage);
-        return "dashboard";
+        return "index";
 
     }
 
