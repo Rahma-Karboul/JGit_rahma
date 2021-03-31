@@ -163,4 +163,30 @@ function checkConnx() {
 
 $( "#repo_url").on("focusout",checkConnx);
 $('.nav-tabs li').on("click",checkConnx);
+
+$('.eBtn').on('click', function (event) {
+    event.preventDefault();
+    var href = $(this).attr('href');
+    var text = $(this).text(); //return New or Edit
+
+   
+        $.get(href, function (credential) {
+            $('#formEditCredential #credentialId').val(credential.credentialId);
+            $('#formEditCredential #provider').val(credential.provider);
+            $('#formEditCredential #username').val(credential.username);
+            $('#formEditCredential #email').val(credential.email);
+            $('#formEditCredential #password').val(credential.password);
+           
+        });
+        $('.edit-credential-modal').modal({show:true});
+    
+});
+
+
+$('.delBtn').on('click', function (event) {
+    event.preventDefault();
+    var href = $(this).attr('href');
+    $('#myModal #delRef').attr('href', href);
+    $('#myModal').modal();
+});
   

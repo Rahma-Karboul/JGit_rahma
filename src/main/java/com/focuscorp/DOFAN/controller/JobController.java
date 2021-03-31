@@ -199,7 +199,7 @@ public class JobController {
 
         //get from input
         String urlrepo = pipeline.getRepositoryUrl();
-        String urlRepoStr = urlrepo.substring(19);
+        String urlRepoStr = "TesnimK/newfortest"; /*urlrepo.substring(19);*/
      //   String sRepoUrl = "TesnimK/newfortest" ;//martinwojtus/tutorials" //;
        
         try{
