@@ -69,44 +69,70 @@
 
                 <div class="row">
                     <div class="col-md-12 col-sm-12">
-                        <!--current pack-->
+
                         <div class="col-md-4 col-sm-4">
                             <div class="x_panel">
-                                <div class="x_title">
-                                    <h2>Current Pack</h2>
-
-                                    <div class="clearfix"></div>
-                                </div>
                                 <div class="x_content">
                                     <div class="row">
-
                                         <div class="col-md-12">
-
                                             <!-- price element -->
                                             <div class="col-md-12 col-sm-6  ">
-                                                <div class="pricing">
-                                                    <div class="title">
-                                                        <h2>Trial</h2>
-                                                        <h1>free</h1>
-                                                        <span>(2 Weeks)</span>
-                                                    </div>
-                                                    <div class="x_content">
-                                                        <div class="">
-                                                            <div class="pricing_features">
-                                                                <ul class="list-unstyled text-left">
-                                                                    <li><i class="fa fa-times text-danger"></i> <strong>10</strong> Projects</li>
-                                                                    <li><i class="fa fa-check text-success"></i> <strong>Limited </strong> Builds</li>
-                                                                    <li><i class="fa fa-check text-success"></i> <strong>Limited </strong> Pipelines</li>
-                                                                    <li><i class="fa fa-times text-danger"></i> <strong>10</strong> Users</li>
-                                                                    <li><i class="fa fa-times text-danger"></i> <strong>2 weeks</strong> log duration</li>
-                                                                </ul>
-                                                            </div>
+                                                <form id="formBasic" th:action="@{/payBasicPack}"  th:object="${basicClientPack}" method="POST" >
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title" th:text="${packBasic.offer}"></h4>
+                                                        <input name="pack" th:field="*{pack}" hidden/>
+                                                        <div>
+                                                            <span id="currency" style="display: none;">$</span>
+                                                            <output style="font-size: xx-large;" name="priceVal">FREE</output>
+                                                            <span  id="monthly" style="display: none;">Monthly</span>
                                                         </div>
-                                                        <div class="pricing_footer">
-                                                            <a href="javascript:void(0);" class="btn btn-success btn-block" role="button">Subscribe <span> now!</span></a>
-                                                        </div>
+                                                        <input name="price" th:field="*{price}" type="number" step="any" value="0.00" hidden/>
                                                     </div>
-                                                </div>
+                                                    <div class="modal-body">
+                                                        <div class="form-group">
+                                                            <label>Concurrent Pipelines:</label>
+                                                            <output name="pipelineVal" >1</output>
+                                                            <input type="number" th:field="*{pipelines}" name="pipelines" hidden/>
+
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>[[${machineSmall.type}]]  [[${machineSmall.RAM}]]<span> GB RAM</span> [[${machineSmall.CPU}]]<span> CPU</span></label><div class="clearfix"></div>
+                                                            <input class="" id="workLoadSmall"  th:field="*{nbrSmallMachine}"  name="workload" type="range" min="1" max="20" value="1"/><span class="" id="workLoadSmallVal"></span>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>[[${machineMedium.type}]]  [[${machineMedium.RAM}]]<span> GB RAM</span> [[${machineMedium.CPU}]]<span> CPU</span></label><div class="clearfix"></div>
+                                                            <input class="" id="workLoadMedium" th:field="*{nbrMediumMachine}" name="workload" type="range" min="0" max="20" value="0"/><span class="" id="workLoadMediumVal"></span>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>[[${machineLarge.type}]]  [[${machineLarge.RAM}]]<span> GB RAM</span> [[${machineLarge.CPU}]]<span> CPU</span></label><div class="clearfix"></div>
+                                                            <input class="" id="workLoadLarge" th:field="*{nbrLargeMachine}" name="workload" type="range" min="0" max="20" value="0"/><span class="" id="workLoadLargeVal"></span>
+                                                        </div>
+
+                                                        <div class="form-group">
+
+                                                            <select class="form-control selectpicker" th:field="*{operatingSystem}" >
+
+                                                                <option th:each="opr : ${T(com.focuscorp.DOFAN.model.EOperatingSystem).values()}"
+                                                                        th:value="${opr}"
+                                                                        th:text="${opr}">Select operating system
+                                                                </option>
+
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <ul class="list-unstyled text-left" style="list-style-type:disc">
+                                                                <li> <strong th:text="${packBasic.projects}"></strong> Projects</li>
+                                                                <li> <strong th:text="${packBasic.builds}"></strong> Builds</li>
+                                                                <li> <strong th:text="${packBasic.users}"></strong> Users</li>
+                                                                <li><strong  th:text="${packBasic.dataRetention}"></strong> data retention</li>
+                                                            </ul>
+                                                        </div>
+                                                        <div>
+                                                            <input type="submit" class="btn btn-success btn-block" value="Change Plan">
+                                                        </div>
+
+                                                    </div>
+                                                </form>
                                             </div>
                                             <!-- price element -->
 
@@ -117,79 +143,118 @@
 
                             </div>
                         </div>
-                        <!--other packs-->
-                        <div class="col-md-8 col-sm-8">
-                            <div class="x_panel">
-                                <div class="x_title">
-                                    <h2>Other Packs</h2>
 
-                                    <div class="clearfix"></div>
-                                </div>
+                        <div class="col-md-4 col-sm-4">
+                            <div class="x_panel">
                                 <div class="x_content">
                                     <div class="row">
                                         <div class="col-md-12">
+                                            <!-- price element -->
+                                            <div class="col-md-12 col-sm-6  ">
+                                                <form id="formPro" th:action="@{/payProPack}"  th:object="${proClientPack}" method="POST" >
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title" th:text="${packPro.offer}"></h4>
+                                                        <input name="pack" th:field="*{pack}" hidden/>
+                                                        <div>
+                                                            <span id="currencyPro" style="display: none;">$</span>
+                                                            <output  style="font-size: xx-large;" name="priceVal">FREE</output>
+                                                            <span  id="monthlyPro" style="display: none;">Monthly</span>
+                                                        </div>
+                                                        <input name="price" th:field="*{price}" type="number" step="any" value="0.00" hidden/>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="form-group">
+                                                            <label>Concurrent Pipelines:</label>
+                                                            <output name="pipelineVal" >0</output>
+                                                            <input type="number" th:field="*{pipelines}" name="pipelines" hidden/>
 
-                                            <!-- price element -->
-                                            <div class="col-md-6 col-sm-6  ">
-                                                <div class="pricing">
-                                                    <div class="title">
-                                                        <h2>Premium</h2>
-                                                        <h1>$1500</h1>
-                                                        <span>Monthly</span>
-                                                    </div>
-                                                    <div class="x_content">
-                                                        <div class="">
-                                                            <div class="pricing_features">
-                                                                <ul class="list-unstyled text-left">
-                                                                    <li><i class="fa fa-times text-danger"></i> <strong>100</strong> Projects</li>
-                                                                    <li><i class="fa fa-check text-success"></i> <strong>Unlimited </strong> Builds</li>
-                                                                    <li><i class="fa fa-check text-success"></i> <strong>Unlimited </strong> Pipelines</li>
-                                                                    <li><i class="fa fa-times text-danger"></i> <strong>Unlimited </strong> Users</li>
-                                                                    <li><i class="fa fa-times text-danger"></i> <strong>1 year</strong> log duration</li>
-                                                                </ul>
-                                                            </div>
                                                         </div>
-                                                        <div class="pricing_footer">
-                                                            <a href="javascript:void(0);" class="btn btn-success btn-block" role="button">Subscribe <span> now!</span></a>
+                                                        <div class="form-group">
+                                                            <label>[[${machineSmall.type}]]  [[${machineSmall.RAM}]]<span> GB RAM</span> [[${machineSmall.CPU}]]<span> CPU</span></label><div class="clearfix"></div>
+                                                            <input class="" id="workLoadSmallPro" th:field="*{nbrSmallMachine}" name="workload" type="range" min="0" max="20" value="0"/><span class="" id="workLoadSmallProVal"></span>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- price element -->
+                                                        <div class="form-group">
+                                                            <label>[[${machineMedium.type}]]  [[${machineMedium.RAM}]]<span> GB RAM</span> [[${machineMedium.CPU}]]<span> CPU</span></label><div class="clearfix"></div>
+                                                            <input class="" id="workLoadMediumPro" th:field="*{nbrMediumMachine}" name="workload" type="range" min="0" max="20" value="0"/><span class="" id="workLoadMediumProVal"></span>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>[[${machineLarge.type}]]  [[${machineLarge.RAM}]]<span> GB RAM</span> [[${machineLarge.CPU}]]<span> CPU</span></label><div class="clearfix"></div>
+                                                            <input class="" id="workLoadLargePro" th:field="*{nbrLargeMachine}" name="workload" type="range" min="0" max="20" value="0"/><span class="" id="workLoadLargeProVal"></span>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <select class="form-control selectpicker" th:field="*{operatingSystem}" >
 
-                                            <!-- price element -->
-                                            <div class="col-md-6 col-sm-6  ">
-                                                <div class="pricing">
-                                                    <div class="title">
-                                                        <h2>Business</h2>
-                                                        <h1>$2500</h1>
-                                                        <span>Monthly</span>
-                                                    </div>
-                                                    <div class="x_content">
-                                                        <div class="">
-                                                            <div class="pricing_features">
-                                                                <ul class="list-unstyled text-left">
-                                                                    <li><i class="fa fa-check text-success"></i> <strong>Unlimited</strong> Projects</li>
-                                                                    <li><i class="fa fa-check text-success"></i> <strong>Unlimited </strong> Builds</li>
-                                                                    <li><i class="fa fa-check text-success"></i> <strong>Unlimited </strong> Pipelines</li>
-                                                                    <li><i class="fa fa-check text-success"></i> <strong>Unlimited </strong> Users</li>
-                                                                    <li><i class="fa fa-check text-success"></i> <strong>1 year</strong> log duration</li>
-                                                                </ul>
-                                                            </div>
+                                                                <option th:each="opr : ${T(com.focuscorp.DOFAN.model.EOperatingSystem).values()}"
+                                                                        th:value="${opr}"
+                                                                        th:text="${opr}">Select operating system
+                                                                </option>
+
+                                                            </select>
                                                         </div>
-                                                        <div class="pricing_footer">
-                                                            <a href="javascript:void(0);" class="btn btn-success btn-block" role="button">Subscribe <span> now!</span></a>
+                                                        <div class="form-group">
+                                                            <ul class="list-unstyled text-left" style="list-style-type:disc">
+                                                                <li> <strong th:text="${packPro.projects}"></strong> Projects</li>
+                                                                <li> <strong th:text="${packPro.builds}"></strong> Builds</li>
+                                                                <li> <strong th:text="${packPro.users}"></strong> Users</li>
+                                                                <li><strong  th:text="${packPro.dataRetention}"></strong> data retention</li>
+                                                            </ul>
                                                         </div>
+                                                        <div>
+                                                            <input type="submit" class="btn btn-success btn-block" value="Change Plan">
+
+                                                        </div>
+
                                                     </div>
-                                                </div>
+                                                </form>
                                             </div>
                                             <!-- price element -->
 
                                         </div>
                                     </div>
                                 </div>
+
+
                             </div>
                         </div>
+
+                        <div class="col-md-4 col-sm-4">
+                            <div class="x_panel">
+                                <div class="x_content">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <!-- price element -->
+                                            <div class="col-md-12 col-sm-6  ">
+                                                <form  action="#" method="POST" >
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title" th:text="${packEntreprise.offer}"></h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="form-group">
+                                                            <ul class="list-unstyled text-left" style="list-style-type:disc">
+                                                                <li>All basic and pro features</li>
+                                                                <li> <strong th:text="${packEntreprise.projects}"></strong> Projects</li>
+                                                                <li> <strong th:text="${packEntreprise.builds}"></strong> Builds</li>
+                                                                <li> <strong th:text="${packEntreprise.users}"></strong> Users</li>
+                                                                <li><strong  th:text="${packEntreprise.dataRetention}"></strong> data retention</li>
+                                                            </ul>
+                                                        </div>
+                                                        <div>
+                                                            <a data-toggle="modal" data-target="#entreprisePaymentPack" class="btn btn-success btn-block" role="button">Contact <span> us!</span></a>
+                                                        </div>
+
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <!-- price element -->
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
@@ -207,7 +272,57 @@
         <!-- /footer content -->
     </div>
 </div>
+<div id="entreprisePaymentPack" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form  th:action="@{/packEntreprise}"  method="POST">
 
+                <div class="modal-header">
+                    <h4 class="modal-title">Ask for Quote</h4>
+                </div>
+                <div class="modal-body">
+ <!--                   <div class="form-group">
+                        <label>Your full name *</label>
+                        <input  type="text" class="form-control" name="username" th:value="${clientEntrep.username}" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Your phone number</label>
+                        <input type="tel" class="form-control" name="phone" th:value="${clientEntrep.phone}" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Your work email address *</label>
+                        <input type="email" class="form-control" name="email" th:value="${clientEntrep.email}" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Name of your company *</label>
+                        <input type="text" class="form-control" name="company" th:value="${clientEntrep.company}" required>
+                    </div>-->
+                    <div class="form-group">
+                        <label>Preferred Deployment</label>
+                        <select class="form-control selectpicker" name="deployment" th:value="${entrepPack.deployment}">
+                            <option th:value="SaaS" th:text="SaaS">
+                            </option>
+                            <option th:value="Hybrid" th:text="Hybrid">
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Concurrent Pipelines</label>
+                        <input type="number" class="form-control" name="pipelines" th:value="${entrepClientPack.pipelines}" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Number of Users</label>
+                        <input type="number" class="form-control" name="users" th:value="${entrepPack.users}" required>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn" value="SUBMIT">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <!-- :: is a footer fragment selector -->
 <div th:replace="common/includes :: body-bottom-scripts" />

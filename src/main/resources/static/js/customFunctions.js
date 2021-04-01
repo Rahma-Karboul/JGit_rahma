@@ -189,4 +189,134 @@ $('.delBtn').on('click', function (event) {
     $('#myModal #delRef').attr('href', href);
     $('#myModal').modal();
 });
-  
+
+//calcul price of pack and number of pipelines
+$(document).ready(function() {
+    //BASIC form configuration
+    var formBasic = document.getElementById("formBasic");
+
+    function basicPackConf() {
+        var pipelines = formBasic.elements["pipelines"];
+        var pipelineVal = formBasic.elements["pipelineVal"];
+
+        var price = formBasic.elements["price"];
+        var priceVal = formBasic.elements["priceVal"];
+
+        var currency = document.getElementById("currency");
+        var monthly = document.getElementById("monthly");
+        var smallVal = workSliderSmall.value;
+        var mediumVal = workSliderMedium.value;
+        var largeVal = workSliderLarge.value;
+        var pipelinesValue = parseInt(smallVal)+ parseInt(mediumVal)+ parseInt(largeVal);
+        var priceValue = 19 * (parseInt(smallVal) - 1) + 49 * parseInt(mediumVal) + 139 * parseInt(largeVal);
+        if(priceValue === 0) {
+            currency.style.display= "none";
+            monthly.style.display= "none";
+            price.value = 0.00;
+            priceVal.value = "FREE";
+
+        } else {
+            currency.style.display= "initial";
+            monthly.style.display= "initial";
+            price.value = priceValue;
+            priceVal.value = priceValue;
+        }
+
+        pipelineVal.value = pipelinesValue;
+        pipelines.value = pipelinesValue;
+
+    }
+    // edit workloadSmall slider
+    var workSliderSmall = document.getElementById("workLoadSmall");
+    var workOutputSmall = document.getElementById("workLoadSmallVal");
+    workOutputSmall.innerHTML = workSliderSmall.value;
+
+    workSliderSmall.oninput = function () {
+        workOutputSmall.innerHTML = this.value;
+        basicPackConf();
+    }
+
+    // edit workloadMedium slider
+    var workSliderMedium = document.getElementById("workLoadMedium");
+    var workOutputMedium = document.getElementById("workLoadMediumVal");
+    workOutputMedium.innerHTML = workSliderMedium.value;
+
+    workSliderMedium.oninput = function () {
+        workOutputMedium.innerHTML = this.value;
+        basicPackConf();
+    }
+
+    // edit workloadLarge slider
+    var workSliderLarge = document.getElementById("workLoadLarge");
+    var workOutputLarge = document.getElementById("workLoadLargeVal");
+    workOutputLarge.innerHTML = workSliderLarge.value;
+
+    workSliderLarge.oninput = function () {
+        workOutputLarge.innerHTML = this.value;
+        basicPackConf();
+    }
+
+    //PRO form configuration
+    var formPro = document.getElementById("formPro");
+
+    function proPackConf() {
+        var pipelines = formPro.elements["pipelines"];
+        var pipelineVal = formPro.elements["pipelineVal"];
+
+        var price = formPro.elements["price"];
+        var priceVal = formPro.elements["priceVal"];
+
+        var currency = document.getElementById("currencyPro");
+        var monthly = document.getElementById("monthlyPro");
+        var smallVal = workSliderSmallPro.value;
+        var mediumVal = workSliderMediumPro.value;
+        var largeVal = workSliderLargePro.value;
+        var pipelinesValue = parseInt(smallVal)+ parseInt(mediumVal)+ parseInt(largeVal);
+        var priceValue = 29 * (parseInt(smallVal)) + 59 * parseInt(mediumVal) + 159 * parseInt(largeVal);
+        if(priceValue === 0) {
+            currency.style.display= "none";
+            monthly.style.display= "none";
+            price.value = 0.00;
+            priceVal.value = "FREE";
+
+        } else {
+            currency.style.display= "initial";
+            monthly.style.display= "initial";
+            price.value = priceValue;
+            priceVal.value = priceValue;
+        }
+
+        pipelineVal.value = pipelinesValue;
+        pipelines.value = pipelinesValue;
+
+    }
+    // edit workloadSmall slider
+    var workSliderSmallPro = document.getElementById("workLoadSmallPro");
+    var workOutputSmallPro = document.getElementById("workLoadSmallProVal");
+    workOutputSmallPro.innerHTML = workSliderSmallPro.value;
+
+    workSliderSmallPro.oninput = function () {
+        workOutputSmallPro.innerHTML = this.value;
+        proPackConf();
+    }
+
+    // edit workloadMedium slider
+    var workSliderMediumPro = document.getElementById("workLoadMediumPro");
+    var workOutputMediumPro = document.getElementById("workLoadMediumProVal");
+    workOutputMediumPro.innerHTML = workSliderMediumPro.value;
+
+    workSliderMediumPro.oninput = function () {
+        workOutputMediumPro.innerHTML = this.value;
+        proPackConf();
+    }
+
+    // edit workloadLarge slider
+    var workSliderLargePro = document.getElementById("workLoadLargePro");
+    var workOutputLargePro = document.getElementById("workLoadLargeProVal");
+    workOutputLargePro.innerHTML = workSliderLargePro.value;
+
+    workSliderLargePro.oninput = function () {
+        workOutputLargePro.innerHTML = this.value;
+        proPackConf();
+    }
+});
