@@ -1,6 +1,8 @@
 package com.focuscorp.DOFAN.controller;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.net.URI;
 import java.util.*;
 
@@ -134,13 +136,23 @@ public class JobController {
     public String addPipeline(@ModelAttribute("newpipeline") Pipeline pipeline, Model model) throws Exception{
 
         //System.out.println(model.getAttribute("newpipeline"));
-        //System.out.println(pipeline.getProject());
-        //System.out.println(pipeline.getName());
 
+        ////////////////////// Adding Pipeline to database ///////////
         pipelineService.addPipeline(pipeline);
-if(pipeline.isBuildTool()){
-
-}
+        ////////////////////// Preparing Jenkinsfile ///////////////////////////
+        FileWriter fw = new FileWriter("Jenkinsfile", true);
+        BufferedWriter bw = new BufferedWriter(fw);
+        if(pipeline.isBuildTool()){
+            System.out.println("Buildtool activated");
+            bw.write("node() {\n" +
+                    "    stage('prepare') {\n" +
+                    "        checkout scm\n" +
+                    "        setupCommonPipelineEnvironment script:this\n" +
+                    "    }\n" +
+                    "}");
+            bw.newLine();
+            bw.close();
+        }
         /*try {
             JenkinsServer jenkins = new JenkinsServer(new URI("http://10.5.14.122/"), "admin", "114a3496334f9a730e749d70cfeac25979");
             String sourceXML = FileUtils.readFileToString(new File(".pipeline/config.xml"), "UTF-8");
