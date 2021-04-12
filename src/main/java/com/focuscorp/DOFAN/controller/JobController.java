@@ -1,7 +1,8 @@
 package com.focuscorp.DOFAN.controller;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.File;
+import java.net.URI;
+import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -11,9 +12,10 @@ import com.focuscorp.DOFAN.service.CredentialService;
 import com.focuscorp.DOFAN.service.PipelineService;
 import com.focuscorp.DOFAN.service.ProjectServiceImplementation;
 
-import org.kohsuke.github.GHRepository;
-import org.kohsuke.github.GitHub;
-import org.kohsuke.github.GitHubBuilder;
+import com.offbytwo.jenkins.JenkinsServer;
+import com.offbytwo.jenkins.model.Job;
+import org.apache.commons.io.FileUtils;
+import org.kohsuke.github.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.focuscorp.DOFAN.model.Pipeline;
@@ -27,8 +29,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Base64;
-import java.util.Optional;
 
 @Controller
 public class JobController {
@@ -131,13 +131,24 @@ public class JobController {
 
     ////////////////////////////////////// Create/Add Pipeline  ////////////////////////////////////////////
     @RequestMapping(value = "/addPipeline", method = RequestMethod.POST)
-    public String addPipeline(@ModelAttribute("newpipeline") Pipeline pipeline, Model model) {
+    public String addPipeline(@ModelAttribute("newpipeline") Pipeline pipeline, Model model) throws Exception{
 
         //System.out.println(model.getAttribute("newpipeline"));
         //System.out.println(pipeline.getProject());
         //System.out.println(pipeline.getName());
 
         pipelineService.addPipeline(pipeline);
+if(pipeline.isBuildTool()){
+
+}
+        /*try {
+            JenkinsServer jenkins = new JenkinsServer(new URI("http://10.5.14.122/"), "admin", "114a3496334f9a730e749d70cfeac25979");
+            String sourceXML = FileUtils.readFileToString(new File(".pipeline/config.xml"), "UTF-8");
+            jenkins.createJob("SalutTaJours", sourceXML,true);
+        } catch (Exception e) {
+        System.out.println("Exception Occured!!!");
+        e.printStackTrace();}*/
+
         return "redirect:/builds";
     }
 
