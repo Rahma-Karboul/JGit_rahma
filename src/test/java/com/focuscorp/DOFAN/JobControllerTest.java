@@ -2,6 +2,11 @@ package com.focuscorp.DOFAN;
 
 import com.focuscorp.DOFAN.model.Pipeline;
 import org.apache.commons.codec.binary.StringUtils;
+import org.eclipse.jgit.api.Git;
+import org.eclipse.jgit.api.errors.GitAPIException;
+import org.eclipse.jgit.lib.Ref;
+import org.eclipse.jgit.transport.URIish;
+import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -38,6 +43,7 @@ import com.offbytwo.jenkins.JenkinsServer;
 
 import java.io.*;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.*;
 import com.offbytwo.jenkins.model.Build;
 import com.offbytwo.jenkins.model.Job;
@@ -122,32 +128,12 @@ public class JobControllerTest {
 
          //jenkins.createFolder("TesnimFolder",false);
             String sourceXML = FileUtils.readFileToString(new File(".pipeline/config.xml"), "UTF-8");
-            jenkins.createJob("HelloRamaaaaaaaa", sourceXML,true);
+            jenkins.createJob("HelloConfigXML", sourceXML,true);
             //System.out.println(" JenkinsXMLfile: "+jenkins.getJobXml("rahmaDOFANSecurity"));
         } catch (Exception e) {
         System.out.println("Exception Occured!!!");
         e.printStackTrace();
     }
-        //Pipeline MultiBranch
-        //JobWithDetails job = jobs.get("rahmaDOFANSecurity").details();
-       // System.out.println("Name : "+ job.getName());
-       // System.out.println("URL : "+ job.getUrl());
-
-        //Normal Job
-       // JobWithDetails jobHello = jobs.get("checkstyle").details();
-       // System.out.println("URL : "+ jobHello.getUrl());
-        //HelloDOFAN
-       // System.out.println( jobHello.getDisplayName());
-        //For Testing...
-       // System.out.println(jobHello.getDescription());
-        //5
-       // System.out.println(jobHello.getLastBuild().details().getNumber());
-        //5
-       //System.out.println(jobHello.getLastFailedBuild().details().getNumber());
-        //System.out.println("console" + jobHello.details().getLastBuild().details().getConsoleOutputText());
-        //System.out.println("----------------------------------------------");
-        //JobWithDetails jobHelloDofan_ = jobs.get("HelloDofan_").details();
-       // System.out.println(jobHelloDofan_);
     }
 
     @Test
@@ -169,14 +155,54 @@ public class JobControllerTest {
 
         GHRepository repository = github.getRepository("focuscorp/DOFAN");
 
-        /*GHCommitBuilder x = repository.createCommit();
-        x.message("Test Commit");
-        GHCommit x2 =x.create();
+        //GHCommitBuilder x = repository.createCommit();
+        //x.message("Test Commit");
+        System.out.println(repository.createContent().commit());
+        /*GHCommit x2 =x.create();
         String Jenkinsfile = FileUtils.readFileToString(new File("Jenkinsfile"), "UTF-8");
         Object x2 = new GHEventPayload.Push.PushCommit();
         System.out.println(repository.getCollaboratorNames());
         System.out.println(x2.getAuthor().getName());*/
         //repository.createPullRequest("Test Pull Request","hello","master",Jenkinsfile);
+    }
+
+    @Test
+    public void initLocal() throws IOException, URISyntaxException {
+        File localpath = new File("C:/Users/FOCUS/Desktop/DOFAN/DOFAN-rahmaBranch");
+        try {
+
+            Git git = Git.init().setDirectory(localpath).call();
+            git.add().addFilepattern(".").call();
+            git.commit().setMessage("Init").setAll(true).call();
+            git.branchCreate().setForce(true).setName("Development").call();
+            git.branchCreate().setForce(true).setName("Controladores").call();
+            git.branchCreate().setForce(true).setName("Servicios").call();
+            git.branchCreate().setForce(true).setName("Repositorios").call();
+            git.branchCreate().setForce(true).setName("Entidades").call();
+            git.commit().setMessage("Branches creadas").call();
+        } catch (GitAPIException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void initRemote() throws GitAPIException, URISyntaxException {
+        File localpath = new File("C:/Users/FOCUS/Desktop/DOFAN/DOFAN-rahmaBranch");
+        Git git =Git.init().setDirectory(localpath).call();
+        try {
+
+
+                System.out.println("rama");
+
+                git = Git.init().setDirectory(localpath).call();
+                git.remoteAdd().setUri(new URIish("https://github.com/Rahma-Karboul/JGit.git")).setName("main").call();
+                git.push().setRemote("https://github.com/Rahma-Karboul/JGit.git").setCredentialsProvider(new UsernamePasswordCredentialsProvider("Rahma-Karboul","Tunis1994++" )).setPushAll().add(".").call();
+
+
+        } catch (GitAPIException | URISyntaxException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Test

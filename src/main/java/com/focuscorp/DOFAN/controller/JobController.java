@@ -144,11 +144,8 @@ public class JobController {
         BufferedWriter bw = new BufferedWriter(fw);
         if(pipeline.isBuildTool()){
             System.out.println("Buildtool activated");
-            bw.write("node() {\n" +
-                    "    stage('prepare') {\n" +
-                    "        checkout scm\n" +
-                    "        setupCommonPipelineEnvironment script:this\n" +
-                    "    }\n" +
+            bw.write("stage('build') {\n" +
+                    "    mtaBuild script: this\n" +
                     "}");
             bw.newLine();
             bw.close();

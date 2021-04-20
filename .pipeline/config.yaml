@@ -1,0 +1,120 @@
+general:
+  productiveBranch: 'master'
+  globalExtensionsRepository: 'https://github.wdf.sap.corp/CALMBuild/pipeline-extensions'
+  globalExtensionsVersion: 'v41'
+  globalExtensionsRepositoryCredentialsId: 'GitHub_access_token_of_technical_user_TUGHCALMBuild'
+  sapPiperDownloadCredentialsId: 'GitHub_access_token_of_technical_user_TUGHCALM'
+  unsafeMode: true
+  collectTelemetryData: false
+  xMake:
+    buildQuality: 'Milestone'
+    novaCredentialsId: 'xmakeNova'
+  maven:
+    projectSettingsFile : 'settings.xml'
+  gitCredentialsId: SSH_private_key_of_technical_user_TUGHCALMBuild
+  gitSshKeyCredentialsId: SSH_private_key_of_technical_user_TUGHCALMBuild
+  buildTool: mta
+  deployTool: mtaDeployPlugin
+  mtaDeployParameters: '-f --version-rule ALL'
+  cfApiEndpoint: https://api.cf.eu10.hana.ondemand.com
+  cfOrg: dwc
+  cfDevSpace: calm-dev-eu10
+  cfCredentialsId: calm-dwc-serviceuser
+  themistoUrl: 'https://themisto-calm.cfapps.eu10.hana.ondemand.com'
+  themistoCredentialsId: 'dwc-themisto'
+  influxDBServer: Jenkins
+
+steps:
+  dockerExecuteOnKubernetes:
+    containerPullImageFlags:
+      's4sdk/docker-node-browsers': true
+
+  mavenExecute:
+    dockerImage: maven:3.6.3-jdk-11-slim
+
+  artifactPrepareVersion:
+    versioningType: 'cloud'
+    gitHttpsCredentialsId: 'GitHub_access_token_of_technical_user_TUGHCALMBuild'
+
+  executeVulasScan:
+    vulasSpaceToken: '2126F8ABB2CF0B156ED4C4B5F57F918F'
+
+  detectExecuteScan:
+    script: this
+    dockerImage: 'maven:3.6.3-jdk-11-slim'
+    detectTokenCredentialsId: 'Detect_token_of_technical_user_TUGHCALMBuild'
+    serverUrl: 'https://sap.blackducksoftware.com/'
+    groups: ['DETECT_CLOUD_ALM_IMP_100']
+    failOn: ['NONE']
+    scanProperties:
+      - '--detect.detector.search.depth=1'
+      - '--detect.detector.search.exclusion=.xmake,.pipeline,.git,s4hana_pipeline,integration-tests,node_modules'
+      - '--detect.detector.search.exclusion.patterns=src/test'
+      - '--detect.maven.excluded.scopes=test,provided'
+      - '--detect.blackduck.signature.scanner.exclusion.name.patterns=.xmake,.pipeline,.git,s4hana_pipeline,integration-tests,node_modules'
+      - '--logging.level.com.synopsys.integration=INFO'
+      - '--detect.project.version.distribution=SaaS'
+      - '--blackduck.trust.cert=true'
+      - '--blackduck.signature.scanner.memory=4096'
+      - '--blackduck.timeout=6000'
+      - '--detect.report.timeout=4800'
+
+  fortifyExecuteScan:
+    dockerImage: 'docker.wdf.sap.corp:50000/piper/fortify:latest'
+    buildTool: 'maven'
+    serverUrl: 'https://fortify.tools.sap/ssc'
+    fortifyCredentialsId: 'Fortify_token_of_technical_user_TUGHCALMBuild' #this is maintained in the JaaS credentials & remains common across all the JAVA respositories in CALMBuild
+
+  cloudFoundryDeploy:
+    dockerImage: 'docker.wdf.sap.corp:50000/cf-cli-mta-plugin/cf-cli-mta-plugin'
+    dockerWorkspace: '/home/piper'
+
+  triggerE2ETests:
+    azureCredentialsId: 'azure-rest-credentials'
+    set: 'qualificationDEV'
+    stage: 'Dev/AllStableFeatures'
+
+stages:
+  frontendUnitTests:
+    dockerImage: ppiper/node-browsers
+
+  frontendIntegrationTests:
+    dockerImage: ppiper/node-browsers
+
+  additionalTools:
+    vulas:
+      enabled: true
+
+  checkmarxScan:
+    checkmarxServerUrl: 'https://cx.wdf.sap.corp'
+    checkmarxCredentialsId: 'Checkmarx_login_with_technical_user_TUGHCALMBuild'
+    groupId: '6d759704-5048-40a4-9fe2-7af969b46522' #common for all UI5 / JS repositories in GitHub org CALMBuild
+    preset: '100023' #see https://jam4.sapjam.com/wiki/show/vpoUYz30nZx4pH57d1rJZc?_lightbox=true
+    incremental: true
+    filterPattern: '!**/node_modules/**, !**/.xmake/**, !**/*_test.go, !**/vendor/**/*.go, !**/*.log, !**/*.lock, !**/*.json, !**/Cx*, !**/test/**, !s4hana_pipeline/**, !**/unit-tests/**, !**/integration-tests/**, !**/frontend-unit-tests/**, !**/e2e-tests/**, !**/performance-tests/**, !**/webdriverIO-TestExecution/**, !**/voyager/**, !**/docs/**, !**/POM.xml, !settings.xml, !spotbugs-exclude.xml, **/*.html, **/*.xml, **/*.go, **/*.py, **/*.js, **/*.scala, **/*.ts'
+    #vulnerabilityThresholdLow: 5
+
+  whitesourceScan:
+    product: 'SHC - CLOUD ALM IMP 100'
+    staticVersion: 'current'
+    credentialsId: 'whitesource-orgToken'
+    whitesourceUserTokenCredentialsId: 'WhiteSource_token_of_technical_user_TUGHCALMBuild'
+    ppms:
+      ID: '73555000100200011319'
+      credentialsId: 'PPMS_compliance_check_with_personal_user'
+      changeRequestUpload: true
+      buildVersion: '0'
+
+  artifactDeployment:
+    enabled: true
+
+  productionDeployment:
+    cfTargets:
+      - org: 'cxs-calmdevprovider'
+        space: 'CALMDev'
+        apiEndpoint: 'https://api.cf.sap.hana.ondemand.com'
+        credentialsId: 'Cloud_Cockpit_login_with_technical_user_TUGHCALMBuild'
+
+postActions:
+  sendNotification:
+    skipFeatureBranches: false
