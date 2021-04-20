@@ -1,5 +1,4 @@
-@Library('piper-lib-os') _
-node() {
+@Library('piper-lib-os') _node() {
      stage('init') {
            cleanWs()
            checkout scm
@@ -7,10 +6,10 @@ node() {
 
         }
 
-}
    stage('build and nexusUpload') {
               mavenExecute(
                  script: this,
                  goals: ['deploy']
               )
            }
+}
